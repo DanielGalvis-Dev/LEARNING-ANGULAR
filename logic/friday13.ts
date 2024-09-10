@@ -20,7 +20,7 @@ const friday13 = (months: number[], year: number) => {
 
     // Si el día 13 cae en viernes, se imprime la fecha y el valor booleano de 'search'
     if (search) {
-      console.log(date); // Muestra la fecha que corresponde a un viernes 13
+      console.log(date.toLocaleDateString()); // Muestra la fecha que corresponde a un viernes 13
       console.log(search); // Muestra 'true' para indicar que es un viernes 13
     }
   });
