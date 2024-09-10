@@ -4,6 +4,8 @@
  * - La función recibirá el mes y el año y retornará verdadero o falso.
  */
 
+// --------------------------------- V1 --------------------------------- \\
+
 // // Función que detecta si existe un viernes 13 en el mes y año indicados
 // const isFriday13 = (month: number, year: number): boolean => {
 //   // Crea un objeto Date para el día 13 del mes y año indicados
@@ -15,6 +17,8 @@
 
 // console.log(isFriday13(9, 2024)); // Devuelve true si hay un viernes 13 en septiembre de 2024
 // console.log(isFriday13(10, 2024)); // Devuelve false si no hay un viernes 13 en octubre de 2024
+
+// --------------------------------- V2 --------------------------------- \\
 
 /// Arreglo que contiene los números de los meses del año (1 = Enero, 2 = Febrero, ..., 12 = Diciembre)
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
