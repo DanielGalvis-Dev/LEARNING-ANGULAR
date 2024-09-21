@@ -1,0 +1,50 @@
+.fila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.asiento {
+  position: relative;
+
+  p {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    padding: 5px 5px;
+    background: blue;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .position {
+    opacity: 0;
+    position: absolute;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    background: blueviolet;
+    border: none;
+    color: white;
+    transition: 0.2s;
+    top: 10px;
+    border-radius: 5px;
+    z-index: -1;
+  }
+
+  p:hover + .position {
+    top: -40px;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  .ocupado {
+    background: #f00;
+  }
+}

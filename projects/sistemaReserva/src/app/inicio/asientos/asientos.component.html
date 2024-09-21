@@ -1,0 +1,12 @@
+<div class="fila" *ngFor="let asiento of asientos; let i = index">
+  <span>{{ i }}</span>
+  <div class="asiento" *ngFor="let asiento of asientos[i]; let j = index">
+    <p
+      [ngClass]="asientos[i][j] === true ? 'ocupado' : ''"
+      (click)="reservarAsiento(i, j)"
+    >
+      {{ asientos[i][j] === true ? "X" : "L" }}
+    </p>
+    <span class="position"> {{ i }},{{ j }} </span>
+  </div>
+</div>
