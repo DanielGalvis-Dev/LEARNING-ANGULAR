@@ -1,12 +1,37 @@
-<div class="fila" *ngFor="let asiento of asientos; let i = index">
-  <span>{{ i }}</span>
-  <div class="asiento" *ngFor="let asiento of asientos[i]; let j = index">
+<!-- Bucle principal que recorre las filas de la matriz de asientos -->
+@for (asiento of asientos; track asiento; let row = $index) {
+
+<!-- Div que representa una fila de asientos -->
+<div class="fila">
+  <!-- Muestra el índice de la fila en pantalla -->
+  <span>{{ row }}</span>
+
+  <!-- Bucle que recorre los asientos de la fila actual -->
+  @for (asiento of asientos[row]; track asiento; let col = $index) {
+
+  <!-- Div que representa un asiento individual -->
+  <div class="asiento">
+    <!-- <p> - Texto dentro del asiento que actúa como botón -->
+    <!-- matTooltip - Tooltip que muestra la posición del asiento (fila, columna) al pasar el ratón sobre él -->
+    <!-- matTooltipPosition - Posición del tooltip por encima del asiento -->
+    <!-- [ngClass] - Clase dinámica que aplica la clase 'ocupado' si el asiento está reservado (true) -->
+    <!-- (click) - Evento que se dispara al hacer clic en el asiento, llamando a la función reservarAsiento con los índices de fila y columna -->
     <p
-      [ngClass]="asientos[i][j] === true ? 'ocupado' : ''"
-      (click)="reservarAsiento(i, j)"
+      matTooltip="{{ row }},{{ col }}"
+      matTooltipPosition="above"
+      [ngClass]="asientos[row][col] === true ? 'ocupado' : ''"
+      (click)="reservarAsiento(row, col)"
     >
-      {{ asientos[i][j] === true ? "X" : "L" }}
+      <!-- Muestra 'X' si el asiento está ocupado, de lo contrario muestra 'L' para indicar que está libre -->
+      {{ asientos[row][col] ? "X" : "L" }}
     </p>
-    <span class="position"> {{ i }},{{ j }} </span>
   </div>
+
+  <!-- Fin del bucle de asientos en la fila actual -->
+  }
+
+  <!-- Fin de la fila de asientos -->
 </div>
+
+<!-- Fin del bucle principal de filas -->
+}

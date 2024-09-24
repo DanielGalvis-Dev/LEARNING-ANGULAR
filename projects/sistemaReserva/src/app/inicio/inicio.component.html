@@ -1,12 +1,25 @@
+<!-- Contenedor para las acciones -->
 <div class="actions">
-  <!-- <button mat-raised-button (click)="cargarAsientos()">Generar mapa</button> -->
-  <button mat-raised-button (click)="removeReservations()">
+  <!-- mat-raised-button - Botón elevado con estilo de Angular Material -->
+  <!-- matTooltip - Tooltip que indica la acción del botón al pasar el ratón -->
+  <!-- (click) - Evento de clic que llama a la función removeReservations para eliminar todas las reservas -->
+  <button
+    mat-raised-button
+    matTooltip="Haga clic para eliminar todas las reservas"
+    (click)="removeReservations()"
+  >
     Eliminar reservas
   </button>
 </div>
+
+<!-- Tarjeta de Angular Material que contiene información sobre los asientos -->
 <mat-card appearance="outlined" style="margin: 10px; padding: 10px">
+  <!-- Título de la tarjeta -->
   <mat-card-title>Lugares disponibles</mat-card-title>
+
+  <!-- Contenido de la tarjeta -->
   <mat-card-content>
-    <app-asientos />
+    <!-- Componente personalizado que gestiona y muestra los asientos -->
+    <app-asientos></app-asientos>
   </mat-card-content>
 </mat-card>
