@@ -12,11 +12,9 @@
           class="item"
           [ngClass]="{
             isBussyP1:
-              tablero[row][col].isBusy === true &&
-              tablero[row][col].player === turns.X,
+              tablero[row][col].isBusy && tablero[row][col].player === turns.X,
             isBussyP2:
-              tablero[row][col].isBusy === true &&
-              tablero[row][col].player === turns.Y
+              tablero[row][col].isBusy && tablero[row][col].player === turns.Y
           }"
           (click)="ocuppy(col)"
         ></div>
@@ -34,12 +32,18 @@
         align-items: center;
       "
     >
-      <p style="margin: 0"> TURN: <br> {{ turn }}</p>
+      <p style="margin: 0">
+        TURN: <br />
+        {{ turn }}
+      </p>
       <button mat-raised-button (click)="restarGame()">
         Comenzar de nuevo
       </button>
       @if (isWinner !== '') {
-      <p style="margin: 0"> WINNER: <br> {{ isWinner }}</p>
+      <p style="margin: 0">
+        WINNER: <br />
+        {{ isWinner }}
+      </p>
       }
     </mat-card-footer>
   </mat-card>

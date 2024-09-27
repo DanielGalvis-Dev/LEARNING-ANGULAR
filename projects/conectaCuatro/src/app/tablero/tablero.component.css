@@ -26,11 +26,13 @@
 }
 
 .isBussyP1 {
-    background: #ff0000;
+  background: #ff0000;
 }
+
 .isBussyP2 {
-    background: #ffff00;
+  background: #ffff00;
 }
+
 .endGame {
-    pointer-events: none;
+  pointer-events: none;
 }
