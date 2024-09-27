@@ -1,1 +1,46 @@
-<canvas></canvas>
+<div class="card-content">
+  <mat-card appearance="outlined">
+    <mat-card-title style="text-align: center; padding-top: 1rem">
+      CONECTA CUATRO
+    </mat-card-title>
+    <mat-card-content style="padding: 1rem">
+      <div class="grid" [ngClass]="{ endGame: isWinner !== '' }">
+        @for (item of tablero; track item; let row = $index) {
+        <!--  -->
+        @for (item of tablero[row]; track item; let col = $index) {
+        <div
+          class="item"
+          [ngClass]="{
+            isBussyP1:
+              tablero[row][col].isBusy === true &&
+              tablero[row][col].player === turns.X,
+            isBussyP2:
+              tablero[row][col].isBusy === true &&
+              tablero[row][col].player === turns.Y
+          }"
+          (click)="ocuppy(col)"
+        ></div>
+        }
+        <!--  -->
+        }
+      </div>
+    </mat-card-content>
+    <mat-card-footer
+      style="
+        text-align: center;
+        padding-bottom: 1rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      "
+    >
+      <p style="margin: 0"> TURN: <br> {{ turn }}</p>
+      <button mat-raised-button (click)="restarGame()">
+        Comenzar de nuevo
+      </button>
+      @if (isWinner !== '') {
+      <p style="margin: 0"> WINNER: <br> {{ isWinner }}</p>
+      }
+    </mat-card-footer>
+  </mat-card>
+</div>
