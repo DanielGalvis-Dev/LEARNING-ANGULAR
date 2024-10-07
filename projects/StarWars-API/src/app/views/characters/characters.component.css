@@ -1,0 +1,32 @@
+.characters-of-starwars {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 10px;
+  min-height: 100vh;
+}
+
+.card {
+  width: 200px;
+  padding: 1rem;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  /* background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg"); */
+  background-size: cover;
+  background-color: #585858;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  margin: 1rem 0;
+}
+
+li {
+  list-style: none;
+}

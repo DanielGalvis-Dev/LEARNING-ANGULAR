@@ -1,0 +1,15 @@
+.card-info {
+  max-width: 30rem;
+  margin: 1rem auto;
+  border: none;
+  background: linear-gradient(to top left, #ebebeb, #f4f4f4);
+}
+
+.Card-info-header {
+  background: linear-gradient(to bottom right, #0000b7, #5e00b7);
+  border-radius: 10px 10px 0 0;
+  align-items: center;
+  color: white;
+  height: 136px;
+}
+

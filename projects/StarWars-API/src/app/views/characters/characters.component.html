@@ -1,0 +1,52 @@
+<mat-card>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="info">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ element.name }}</mat-card-title>
+            <mat-card-subtitle>{{ element.gender }}</mat-card-subtitle>
+          </mat-card-header>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            (click)="viewInfo(element)"
+            matTooltip="Ver mas información acerca de este personaje"
+            matTooltipPosition="right"
+          >
+            Ver mas...
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</mat-card>
+<!-- <div class="actions">
+  @if (anterior !== null) {
+  <button mat-raised-button (click)="prev()">
+    Anterior <mat-icon>arrow_back</mat-icon>
+  </button>
+  } -->
+<!--  -->
+<!-- @if (siguiente !== null) {
+  <button mat-raised-button (click)="next()">
+    Siguiente <mat-icon>arrow_forward</mat-icon>
+  </button>
+  }
+</div> -->

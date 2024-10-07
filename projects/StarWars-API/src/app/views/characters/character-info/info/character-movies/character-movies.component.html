@@ -1,0 +1,16 @@
+<mat-card class="card-content" appearance="outlined">
+  <mat-card-header class="header-sub-padre">
+    <mat-card-subtitle class="subtitle"> PELÍCULAS </mat-card-subtitle>
+  </mat-card-header>
+  @if (characterInfo.films.length > 0) {
+  <!--  -->
+  @for (film of filmsData; track film) {
+  <!--  -->
+  @for (item of film.characters; track item) {
+  <!--  -->
+  @if (item === characterInfo.url) {
+  <mat-list-item> - {{ film.title }} </mat-list-item>
+  } } } }@else {
+  <mat-list-item> - unknown </mat-list-item>
+  }
+</mat-card>

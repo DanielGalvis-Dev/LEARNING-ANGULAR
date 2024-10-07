@@ -1,0 +1,15 @@
+@if (characterInfo.name) {
+<mat-card class="card-info" appearance="outlined">
+  <mat-card-header class="Card-info-header">
+    <mat-card-title> {{ characterInfo.name.toUpperCase() }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-info [characterInfo]="characterInfo" />
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-card-actions>
+      <button mat-button (click)="volver()">Regresar</button>
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>
+}

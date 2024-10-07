@@ -1,0 +1,28 @@
+<mat-card class="card-content" appearance="outlined">
+  <mat-card-header class="header-sub-padre">
+    <mat-card-subtitle class="subtitle"> ORIGEN </mat-card-subtitle>
+  </mat-card-header>
+  @if (characterInfo.homeworld.length > 0) {
+  <!--  -->
+  @for (planet of planetsData; track planet) {
+  <!--  -->
+  @if (planet.url == characterInfo.homeworld) {
+  <mat-list-item>
+    <strong>Mundo natal</strong> {{ planet.name }}
+  </mat-list-item>
+  } } }@else {
+  <mat-list-item> <strong>Mundo natal</strong> unknown </mat-list-item>
+  }
+  <!--  -->
+
+  <!--  -->
+  @if (characterInfo.species.length > 0) {
+  <!--  -->
+  @for (specie of speciesData; track specie) {
+  <!--  -->
+  @if (specie.url == characterInfo.species) {
+  <mat-list-item> <strong>Especie</strong> {{ specie.name }} </mat-list-item>
+  } } }@else {
+  <mat-list-item> <strong>Especie</strong> unknown </mat-list-item>
+  }
+</mat-card>
