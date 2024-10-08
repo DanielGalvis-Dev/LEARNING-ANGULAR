@@ -5,12 +5,8 @@
   @if (characterInfo.starships.length > 0) {
   <!--  -->
   @for (starship of starshipsData; track starship) {
-  <!--  -->
-  @for (item of characterInfo.starships; track item) {
-  <!--  -->
-  @if (starship.url === item) {
   <mat-list-item> - {{ starship.name }} </mat-list-item>
-  } } }}@else {
+  } } @else {
   <mat-list-item> - unknown </mat-list-item>
   }
 </mat-card>

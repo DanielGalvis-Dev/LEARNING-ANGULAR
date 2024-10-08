@@ -5,12 +5,8 @@
   @if (characterInfo.films.length > 0) {
   <!--  -->
   @for (film of filmsData; track film) {
-  <!--  -->
-  @for (item of film.characters; track item) {
-  <!--  -->
-  @if (item === characterInfo.url) {
   <mat-list-item> - {{ film.title }} </mat-list-item>
-  } } } }@else {
+  }}@else {
   <mat-list-item> - unknown </mat-list-item>
   }
 </mat-card>

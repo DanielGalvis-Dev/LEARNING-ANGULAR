@@ -13,51 +13,39 @@ import { PlanetsService } from '../../../../../services/planets.service';
 @Component({
   selector: 'app-character-origin',
   standalone: true,
-  imports: [MatListModule, MatCardModule, MatProgressSpinnerModule],
+  imports: [MatListModule, MatCardModule],
   templateUrl: './character-origin.component.html',
   styleUrl: './character-origin.component.css',
 })
 export class CharacterOriginComponent implements OnInit {
   @Input() characterInfo!: character;
 
-  speciesService = inject(SpeciesService);
   toolsService = inject(ToolsService);
-  speciesData: speciesResults[] = [];
-  speciesCount = 0;
-  nextPage: string = '';
+  speciesService = inject(SpeciesService);
+  planetsService = inject(PlanetsService);
+  planetsData: planetsResults = {} as planetsResults;
+  speciesData: speciesResults = {} as speciesResults;
 
   ngOnInit(): void {
     this.listPlanets();
     this.listSpecies();
   }
 
-  async listSpecies() {
-    const data = await firstValueFrom(this.speciesService.listar());
-    this.speciesCount = data.count;
-    const count = this.toolsService.readonly(this.speciesCount);
-    for (let i = 0; i < count; i++) {
-      const data = await firstValueFrom(
-        this.speciesService.listar(this.nextPage)
-      );
-      this.speciesData = this.speciesData.concat(data.results);
-      this.nextPage = this.toolsService.extractOfUrl(data.next);
+  async listPlanets() {
+    const platet = this.characterInfo.homeworld.toString();
+    if (platet.length > 0) {
+      let id = parseInt(this.toolsService.extractOfUrl(platet));
+      this.planetsData = await firstValueFrom(this.planetsService.obtener(id));
+      // console.log(this.planetsData);
     }
   }
 
-  planetsService = inject(PlanetsService);
-  planetsData: planetsResults[] = [];
-  planetsCount = 0;
-
-  async listPlanets() {
-    const data = await firstValueFrom(this.planetsService.listar());
-    this.planetsCount = data.count;
-    const count = this.toolsService.readonly(this.planetsCount);
-    for (let i = 0; i < count; i++) {
-      const data = await firstValueFrom(
-        this.planetsService.listar(this.nextPage)
-      );
-      this.planetsData = this.planetsData.concat(data.results);
-      this.nextPage = this.toolsService.extractOfUrl(data.next);
+  async listSpecies() {
+    const specie = this.characterInfo.species.toString();
+    if (specie.length > 0) {
+      let id = parseInt(this.toolsService.extractOfUrl(specie));
+      this.speciesData = await firstValueFrom(this.speciesService.obtener(id));
+      // console.log(this.speciesData);
     }
   }
 }

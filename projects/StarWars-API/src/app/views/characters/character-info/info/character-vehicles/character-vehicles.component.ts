@@ -17,26 +17,19 @@ import { MatCardModule } from '@angular/material/card';
 export class CharacterVehiclesComponent implements OnInit {
   @Input() characterInfo!: character;
 
-  vehiclesService = inject(VehiclesService);
   toolsService = inject(ToolsService);
+  vehiclesService = inject(VehiclesService);
   vehiclesData: vehiclesResults[] = [];
-  vehiclesCount = 0;
-  nextPage: string = '';
 
   ngOnInit(): void {
     this.listVehicles();
   }
 
   async listVehicles() {
-    const data = await firstValueFrom(this.vehiclesService.listar());
-    this.vehiclesCount = data.count;
-    const count = this.toolsService.readonly(this.vehiclesCount);
-    for (let i = 0; i < count; i++) {
-      const data = await firstValueFrom(
-        this.vehiclesService.listar(this.nextPage)
-      );
-      this.vehiclesData = this.vehiclesData.concat(data.results);
-      this.nextPage = this.toolsService.extractOfUrl(data.next);
-    }
+    this.characterInfo.vehicles.forEach(async (vehicle) => {
+      let id = parseInt(this.toolsService.extractOfUrl(vehicle));
+      let res = await firstValueFrom(this.vehiclesService.obtener(id));
+      this.vehiclesData.push(res);
+    });
   }
 }

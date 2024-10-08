@@ -20,23 +20,16 @@ export class CharacterStarshipsComponent implements OnInit {
   starshipsService = inject(StarshipsService);
   toolsService = inject(ToolsService);
   starshipsData: starshipsResults[] = [];
-  starshipsCount = 0;
-  nextPage: string = '';
 
   ngOnInit(): void {
     this.listStarships();
   }
 
   async listStarships() {
-    const data = await firstValueFrom(this.starshipsService.listar());
-    this.starshipsCount = data.count;
-    const count = this.toolsService.readonly(this.starshipsCount);
-    for (let i = 0; i < count; i++) {
-      const data = await firstValueFrom(
-        this.starshipsService.listar(this.nextPage)
-      );
-      this.starshipsData = this.starshipsData.concat(data.results);
-      this.nextPage = this.toolsService.extractOfUrl(data.next);
-    }
+    this.characterInfo.starships.forEach(async (starship) => {
+      let id = parseInt(this.toolsService.extractOfUrl(starship));
+      let res = await firstValueFrom(this.starshipsService.obtener(id));
+      this.starshipsData.push(res);
+    });
   }
 }

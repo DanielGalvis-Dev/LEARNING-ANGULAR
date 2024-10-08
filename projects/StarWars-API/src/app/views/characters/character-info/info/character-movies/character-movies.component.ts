@@ -5,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { character } from '../../../../../models/characters';
+import { ToolsService } from '../../../../../services/tools.service';
 
 @Component({
   selector: 'app-character-movies',
@@ -16,14 +17,18 @@ import { character } from '../../../../../models/characters';
 export class CharacterMoviesComponent implements OnInit {
   @Input() characterInfo!: character;
   filmsService = inject(FilmsService);
+  toolsService = inject(ToolsService);
   filmsData: filmsResults[] = [];
 
   ngOnInit(): void {
-    this.listFilms();
+    this.getFilms();
   }
 
-  async listFilms() {
-    const data = await firstValueFrom(this.filmsService.listar());
-    this.filmsData = data.results;
+  async getFilms() {
+    this.characterInfo.films.forEach(async (film) => {
+      let id = parseInt(this.toolsService.extractOfUrl(film));
+      let res = await firstValueFrom(this.filmsService.obtener(id));
+      this.filmsData.push(res);
+    });
   }
 }
