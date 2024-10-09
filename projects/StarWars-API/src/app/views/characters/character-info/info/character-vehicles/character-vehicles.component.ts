@@ -1,4 +1,11 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { VehiclesService } from '../../../../../services/vehicles.service';
 import { ToolsService } from '../../../../../services/tools.service';
 import { vehiclesResults } from '../../../../../models/vehicles';
@@ -14,18 +21,21 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './character-vehicles.component.html',
   styleUrl: './character-vehicles.component.css',
 })
-export class CharacterVehiclesComponent implements OnInit {
+export class CharacterVehiclesComponent implements OnChanges {
   @Input() characterInfo!: character;
 
   toolsService = inject(ToolsService);
   vehiclesService = inject(VehiclesService);
   vehiclesData: vehiclesResults[] = [];
 
-  ngOnInit(): void {
-    this.listVehicles();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['characterInfo']) {
+      this.listVehicles();
+    }
   }
 
   async listVehicles() {
+    this.vehiclesData = [];
     this.characterInfo.vehicles.forEach(async (vehicle) => {
       let id = parseInt(this.toolsService.extractOfUrl(vehicle));
       let res = await firstValueFrom(this.vehiclesService.obtener(id));

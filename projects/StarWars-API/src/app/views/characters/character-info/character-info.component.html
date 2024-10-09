@@ -6,10 +6,36 @@
   <mat-card-content>
     <app-info [characterInfo]="characterInfo" />
   </mat-card-content>
-  <mat-card-footer>
-    <mat-card-actions class="card-info-actions">
-      <button mat-button (click)="volver()">Volver al inicio</button>
-    </mat-card-actions>
-  </mat-card-footer>
+  <!-- <mat-card-footer> -->
+  <!-- <mat-card-actions class="card-info-actions"> -->
+  <button
+    mat-icon-button
+    matTooltip="Volver al inicio"
+    matTooltipPosition="right"
+    class="back"
+    (click)="volver()"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    matTooltip="Anterior"
+    matTooltipPosition="left"
+    class="prev"
+    (click)="prev()"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    matTooltip="Siguiente"
+    matTooltipPosition="right"
+    class="next"
+    (click)="next()"
+  >
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+  <!-- </mat-card-actions> -->
+  <!-- </mat-card-footer> -->
 </mat-card>
 }

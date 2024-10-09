@@ -1,7 +1,7 @@
 export interface APIRes {
   count: number; // Cantidad total de personajes disponibles en la base de datos
   next: string; // URL de la siguiente página de resultados (si existe)
-  previous: string | null; // URL de la página anterior (o null si no hay una página anterior)
+  previous: string; // URL de la página anterior (o null si no hay una página anterior)
   results: character[]; // Estructura de los objetos de cada personaje
 }
 

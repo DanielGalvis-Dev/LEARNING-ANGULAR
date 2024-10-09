@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { character } from '../../../../models/characters';
@@ -24,6 +24,7 @@ import { CharacterOriginComponent } from './character-origin/character-origin.co
   ],
   templateUrl: './info.component.html',
   styleUrl: './info.component.css',
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoComponent {
   @Input() characterInfo!: character;

@@ -1,4 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { SpeciesService } from '../../../../../services/species.service';
 import { speciesResults } from '../../../../../models/species';
 import { character } from '../../../../../models/characters';
@@ -6,7 +12,6 @@ import { firstValueFrom } from 'rxjs';
 import { ToolsService } from '../../../../../services/tools.service';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { planetsResults } from '../../../../../models/planets';
 import { PlanetsService } from '../../../../../services/planets.service';
 
@@ -17,7 +22,7 @@ import { PlanetsService } from '../../../../../services/planets.service';
   templateUrl: './character-origin.component.html',
   styleUrl: './character-origin.component.css',
 })
-export class CharacterOriginComponent implements OnInit {
+export class CharacterOriginComponent implements OnChanges {
   @Input() characterInfo!: character;
 
   toolsService = inject(ToolsService);
@@ -26,9 +31,11 @@ export class CharacterOriginComponent implements OnInit {
   planetsData: planetsResults = {} as planetsResults;
   speciesData: speciesResults = {} as speciesResults;
 
-  ngOnInit(): void {
-    this.listPlanets();
-    this.listSpecies();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['characterInfo']) {
+      this.listPlanets();
+      this.listSpecies();
+    }
   }
 
   async listPlanets() {

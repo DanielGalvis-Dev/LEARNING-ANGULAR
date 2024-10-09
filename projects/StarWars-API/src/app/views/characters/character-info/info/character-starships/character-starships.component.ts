@@ -1,4 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { starshipsResults } from '../../../../../models/starships';
 import { ToolsService } from '../../../../../services/tools.service';
@@ -14,18 +20,21 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './character-starships.component.html',
   styleUrl: './character-starships.component.css',
 })
-export class CharacterStarshipsComponent implements OnInit {
+export class CharacterStarshipsComponent implements OnChanges {
   @Input() characterInfo!: character;
 
   starshipsService = inject(StarshipsService);
   toolsService = inject(ToolsService);
   starshipsData: starshipsResults[] = [];
 
-  ngOnInit(): void {
-    this.listStarships();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['characterInfo']) {
+      this.listStarships();
+    }
   }
 
   async listStarships() {
+    this.starshipsData = [];
     this.characterInfo.starships.forEach(async (starship) => {
       let id = parseInt(this.toolsService.extractOfUrl(starship));
       let res = await firstValueFrom(this.starshipsService.obtener(id));

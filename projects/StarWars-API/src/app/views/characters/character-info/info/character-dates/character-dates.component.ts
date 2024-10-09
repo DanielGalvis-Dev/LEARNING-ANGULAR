@@ -1,4 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { character } from '../../../../../models/characters';
@@ -11,15 +17,17 @@ import { ToolsService } from '../../../../../services/tools.service';
   templateUrl: './character-dates.component.html',
   styleUrl: './character-dates.component.css',
 })
-export class CharacterDatesComponent implements OnInit {
+export class CharacterDatesComponent implements OnChanges {
   toolService = inject(ToolsService);
   @Input() characterInfo!: character;
 
   created = '';
   edited = '';
 
-  ngOnInit(): void {
-    this.formatDate();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['characterInfo']) {
+      this.formatDate();
+    }
   }
 
   formatDate() {

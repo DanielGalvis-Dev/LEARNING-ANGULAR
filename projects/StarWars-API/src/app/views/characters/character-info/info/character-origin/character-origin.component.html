@@ -1,15 +1,16 @@
 <mat-card class="card-content" appearance="outlined">
   <mat-card-header class="header-sub-padre">
-    <mat-card-subtitle class="subtitle"> ORIGEN </mat-card-subtitle>
+    <mat-card-subtitle class="subtitle"> MUNDO NATAL </mat-card-subtitle>
   </mat-card-header>
   <mat-list-item>
-    <strong>Mundo natal</strong>
     {{ characterInfo.homeworld.length > 0 ? planetsData.name : "unknown" }}
   </mat-list-item>
 
   <!--  -->
+  <mat-card-header class="header-sub-padre">
+    <mat-card-subtitle class="subtitle"> ESPECIE </mat-card-subtitle>
+  </mat-card-header>
   <mat-list-item>
-    <strong>Especie</strong>
     {{ characterInfo.species.length > 0 ? speciesData.name : "unknown" }}
   </mat-list-item>
 </mat-card>
