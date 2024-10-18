@@ -5,7 +5,6 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
 import { starshipsResults } from '../../../../../models/starships';
 import { ToolsService } from '../../../../../services/tools.service';
 import { StarshipsService } from '../../../../../services/starships.service';
@@ -37,7 +36,7 @@ export class CharacterStarshipsComponent implements OnChanges {
     this.starshipsData = [];
     this.characterInfo.starships.forEach(async (starship) => {
       let id = parseInt(this.toolsService.extractOfUrl(starship));
-      let res = await firstValueFrom(this.starshipsService.obtener(id));
+      let res = await this.starshipsService.obtener(id);
       this.starshipsData.push(res);
     });
   }

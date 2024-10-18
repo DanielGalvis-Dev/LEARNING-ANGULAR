@@ -1,4 +1,3 @@
-@if (characterInfo.name) {
 <mat-card class="card-info" appearance="outlined">
   <app-card-header
     (fetchData)="obtener($event)"
@@ -7,7 +6,6 @@
     [name]="name"
   />
   <mat-card-content>
-    <app-character-card-content [characterInfo]="characterInfo" />
+    <!-- <app-info [filmInfo]="filmInfo" /> -->
   </mat-card-content>
 </mat-card>
-}

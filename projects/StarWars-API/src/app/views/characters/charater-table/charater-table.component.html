@@ -28,7 +28,8 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 <mat-paginator
-  [pageSizeOptions]="[8, 20, 50, characterCount]"
+  hidePageSize="false"
+  [pageSizeOptions]="pageSizeOptions"
   showFirstLastButtons
   aria-label="Select page of periodic elements"
 >

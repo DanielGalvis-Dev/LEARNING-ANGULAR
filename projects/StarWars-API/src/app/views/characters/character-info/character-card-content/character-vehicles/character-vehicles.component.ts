@@ -3,13 +3,11 @@ import {
   inject,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { VehiclesService } from '../../../../../services/vehicles.service';
 import { ToolsService } from '../../../../../services/tools.service';
 import { vehiclesResults } from '../../../../../models/vehicles';
-import { firstValueFrom } from 'rxjs';
 import { character } from '../../../../../models/characters';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +36,7 @@ export class CharacterVehiclesComponent implements OnChanges {
     this.vehiclesData = [];
     this.characterInfo.vehicles.forEach(async (vehicle) => {
       let id = parseInt(this.toolsService.extractOfUrl(vehicle));
-      let res = await firstValueFrom(this.vehiclesService.obtener(id));
+      let res = await this.vehiclesService.obtener(id);
       this.vehiclesData.push(res);
     });
   }

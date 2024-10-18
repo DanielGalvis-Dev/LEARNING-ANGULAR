@@ -1,18 +1,14 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
   inject,
-  Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
 import { ToolsService } from '../../../services/tools.service';
 import { APIRes, character } from '../../../models/characters';
-import { firstValueFrom } from 'rxjs';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
@@ -38,6 +34,7 @@ export class CharaterTableComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['info', 'action'];
   characterCount = 0;
   nextPage: string = '';
+  pageSizeOptions: number[] = [8, 20, 50, this.characterCount];
 
   // Constructor
   constructor(private router: Router) {}
@@ -57,19 +54,19 @@ export class CharaterTableComponent implements AfterViewInit, OnInit {
 
   // Listar Personajes
   async list() {
-    const data = await firstValueFrom(this.charactersService.listar());
-    this.characterCount = data.count;
+    const res = await this.charactersService.listar();
+    this.characterCount = res.count;
     const count = this.toolsService.readonly(this.characterCount);
     // console.log(count);
+
     for (let i = 0; i < count; i++) {
-      let data = await firstValueFrom(
-        this.charactersService.listar(this.nextPage)
-      );
+      let data = await this.charactersService.listar(this.nextPage);
       this.results = this.results.concat(data.results);
       this.nextPage = this.toolsService.extractOfUrl(data.next);
     }
 
     // Actualiza la fuente de datos
+    // this.dataSource.data = data.results;
     this.dataSource.data = this.results;
     this.dataSource.paginator = this.paginator; // Reasigna el paginador
   }
@@ -77,6 +74,6 @@ export class CharaterTableComponent implements AfterViewInit, OnInit {
   // Ver informacion detallada del personaje
   viewInfo(object: character) {
     const id = this.toolsService.extractOfUrl(object.url!);
-    this.router.navigate(['characterinfo', id]);
+    this.router.navigate(['characters', id]);
   }
 }

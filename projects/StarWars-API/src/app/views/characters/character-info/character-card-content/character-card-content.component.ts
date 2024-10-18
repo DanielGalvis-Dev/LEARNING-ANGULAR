@@ -1,20 +1,18 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { character } from '../../../../models/characters';
 import { CharacterBasicInfoComponent } from './character-basic-info/character-basic-info.component';
 import { CharacterMoviesComponent } from './character-movies/character-movies.component';
 import { CharacterStarshipsComponent } from './character-starships/character-starships.component';
 import { CharacterVehiclesComponent } from './character-vehicles/character-vehicles.component';
 import { CharacterDatesComponent } from './character-dates/character-dates.component';
 import { CharacterOriginComponent } from './character-origin/character-origin.component';
+import { character } from '../../../../models/characters';
 
 @Component({
-  selector: 'app-info',
+  selector: 'app-character-card-content',
   standalone: true,
   imports: [
     MatListModule,
-    MatGridListModule,
     CharacterBasicInfoComponent,
     CharacterMoviesComponent,
     CharacterStarshipsComponent,
@@ -22,10 +20,9 @@ import { CharacterOriginComponent } from './character-origin/character-origin.co
     CharacterDatesComponent,
     CharacterOriginComponent,
   ],
-  templateUrl: './info.component.html',
-  styleUrl: './info.component.css',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './character-card-content.component.html',
+  styleUrl: './character-card-content.component.css',
 })
-export class InfoComponent {
+export class CharacterCardContentComponent {
   @Input() characterInfo!: character;
 }

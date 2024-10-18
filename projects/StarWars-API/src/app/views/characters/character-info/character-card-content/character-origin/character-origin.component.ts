@@ -8,7 +8,6 @@ import {
 import { SpeciesService } from '../../../../../services/species.service';
 import { speciesResults } from '../../../../../models/species';
 import { character } from '../../../../../models/characters';
-import { firstValueFrom } from 'rxjs';
 import { ToolsService } from '../../../../../services/tools.service';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
@@ -42,7 +41,7 @@ export class CharacterOriginComponent implements OnChanges {
     const platet = this.characterInfo.homeworld.toString();
     if (platet.length > 0) {
       let id = parseInt(this.toolsService.extractOfUrl(platet));
-      this.planetsData = await firstValueFrom(this.planetsService.obtener(id));
+      this.planetsData = await this.planetsService.obtener(id);
       // console.log(this.planetsData);
     }
   }
@@ -51,7 +50,7 @@ export class CharacterOriginComponent implements OnChanges {
     const specie = this.characterInfo.species.toString();
     if (specie.length > 0) {
       let id = parseInt(this.toolsService.extractOfUrl(specie));
-      this.speciesData = await firstValueFrom(this.speciesService.obtener(id));
+      this.speciesData = await this.speciesService.obtener(id);
       // console.log(this.speciesData);
     }
   }

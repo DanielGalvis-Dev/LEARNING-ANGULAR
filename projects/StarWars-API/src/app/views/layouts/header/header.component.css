@@ -1,0 +1,26 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header {
+  padding: 0 80px;
+  background: linear-gradient(to right, #0000b7, #5e00b7 60%);
+  color: #fff;
+
+  button {
+    color: #fff;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #00000055;
+  }
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+.active {
+  background: #00000055;
+}

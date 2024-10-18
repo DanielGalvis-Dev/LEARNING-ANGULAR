@@ -1,0 +1,56 @@
+@if (name) {
+<mat-card-header class="Card-info-header">
+  <mat-card-title>
+    {{ name.toUpperCase() }}
+  </mat-card-title>
+  <mat-card-actions>
+    <!-- Boton para ver la primera pagina -->
+    <button
+      [hidden]="hiddenPrev"
+      mat-icon-button
+      matTooltip="Anterior"
+      matTooltipPosition="left"
+      class="firs-button"
+      (click)="prev()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <!-- Boton para ver la pagina anterior -->
+    <button
+      [hidden]="hiddenPrev"
+      mat-icon-button
+      matTooltip="Anterior"
+      matTooltipPosition="left"
+      class="prev-button"
+      (click)="prev()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <!-- Boton para ver la pagina siguiente -->
+    <button
+      [hidden]="hiddenNext"
+      mat-icon-button
+      matTooltip="Siguiente"
+      matTooltipPosition="above"
+      class="next-button"
+      (click)="next()"
+    >
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+
+    <!-- Boton para ver la ultima pagina -->
+    <button
+      [hidden]="hiddenPrev"
+      mat-icon-button
+      matTooltip="ult"
+      matTooltipPosition="left"
+      class="last-button"
+      (click)="prev()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card-header>
+}

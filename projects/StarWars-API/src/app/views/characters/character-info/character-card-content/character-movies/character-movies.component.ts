@@ -37,12 +37,13 @@ export class CharacterMoviesComponent implements OnChanges {
   }
 
   async getFilms() {
-    this.filmsData = [];
-    this.characterInfo.films.forEach(async (film) => {
+    const newData = this.characterInfo.films.map(async (film) => {
       const id = parseInt(this.toolsService.extractOfUrl(film));
-      const res = await firstValueFrom(this.filmsService.obtener(id));
-      this.filmsData.push(res);
+      const res = await this.filmsService.obtener(id);
+      return res;
     });
+
+    this.filmsData = await Promise.all(newData);
   }
 }
 
@@ -66,7 +67,7 @@ export class CharacterMoviesComponent implements OnChanges {
 
 //     const filmRequests = this.characterInfo.films.map(async (film) => {
 //       const id = parseInt(this.toolsService.extractOfUrl(film));
-//       const res = await firstValueFrom(this.filmsService.obtener(id));
+//       const res = await this.filmsService.obtener(id);
 //       return res;
 //     });
 
