@@ -1,0 +1,10 @@
+<mat-card appearance="outlined" class="card-content">
+    <app-section-header [icon]="'directions_car'" [title]="'VEHICLES'" />
+    <mat-card-content>
+      <mat-list>
+        @for (vehicle of vehicleNames; track vehicle) {
+        <mat-list-item>{{ vehicle }}</mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>

@@ -1,0 +1,19 @@
+.character-item {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
+}
+
+.character-item::after {
+  content: "";
+  width: 0px;
+  height: 1.5px;
+  background: #0000b7;
+  position: absolute;
+  bottom: 12px;
+  transition: 0.3s;
+}
+
+.character-item:hover::after {
+  width: 100%;
+}

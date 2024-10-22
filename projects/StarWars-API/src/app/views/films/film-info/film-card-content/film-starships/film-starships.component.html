@@ -1,0 +1,10 @@
+<mat-card appearance="outlined" class="card-content">
+    <app-section-header [icon]="'rocket_launch'" [title]="'STARSHIPS'" />
+    <mat-card-content>
+      <mat-list>
+        @for (starship of starshipNames; track starship) {
+        <mat-list-item>{{ starship }}</mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>

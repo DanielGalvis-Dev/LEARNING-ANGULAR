@@ -1,0 +1,10 @@
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'groups'" [title]="'SPECIES'" />
+  <mat-card-content>
+    <mat-list>
+      @for (specie of specieNames; track specie) {
+      <mat-list-item>{{ specie }}</mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

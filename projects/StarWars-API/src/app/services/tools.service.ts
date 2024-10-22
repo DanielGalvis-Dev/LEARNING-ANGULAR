@@ -43,4 +43,18 @@ export class ToolsService {
 
     return formattedDate;
   }
+
+  async getData<T>(
+    data: string[],
+    service: (id: number) => Promise<T>
+  ): Promise<T[]> {
+    const newInfo = data.map(async (info) => {
+      const id = parseInt(this.extractOfUrl(info));
+      const res = await service(id);
+      return res;
+    });
+
+    const newData = await Promise.all(newInfo);
+    return newData;
+  }
 }

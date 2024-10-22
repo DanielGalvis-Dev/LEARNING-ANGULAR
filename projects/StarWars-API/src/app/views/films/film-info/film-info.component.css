@@ -1,6 +1,5 @@
 .card-info {
-  max-width: 31rem;
-  margin: 1rem auto;
+  margin: 1rem 75px;
   border: none;
   background: linear-gradient(to top left, #ebebeb, #f4f4f4);
   position: relative;

@@ -5,11 +5,12 @@ import { FilmsService } from '../../../services/films.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { CardHeaderComponent } from '../../layouts/card-header/card-header.component';
+import { FilmCardContentComponent } from "./film-card-content/film-card-content.component";
 
 @Component({
   selector: 'app-film-info',
   standalone: true,
-  imports: [MatCardModule, CardHeaderComponent],
+  imports: [MatCardModule, CardHeaderComponent, FilmCardContentComponent],
   templateUrl: './film-info.component.html',
   styleUrl: './film-info.component.css',
 })

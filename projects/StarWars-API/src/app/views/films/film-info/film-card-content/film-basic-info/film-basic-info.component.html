@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <strong>Director</strong> {{ filmInfo.director }}
+      </mat-list-item>
+      <mat-list-item>
+        <strong>Productor</strong> {{ filmInfo.producer }}
+      </mat-list-item>
+      <mat-list-item>
+        <strong>Fecha de lanzamiento</strong> {{ filmInfo.release_date }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
