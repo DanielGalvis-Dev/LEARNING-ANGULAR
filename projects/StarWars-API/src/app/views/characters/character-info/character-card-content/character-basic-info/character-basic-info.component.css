@@ -1,0 +1,14 @@
+.basic-info-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.basic-info-content * {
+  flex: 50%;
+}
+
+@media (max-width: 970px) {
+  .basic-info-content {
+    display: block;
+  }
+}

@@ -33,7 +33,7 @@ export class ToolsService {
     // Formatear la fecha a un formato más entendible
     const formattedDate = date.toLocaleString('es-ES', {
       year: 'numeric',
-      month: 'long',
+      month: 'numeric',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',

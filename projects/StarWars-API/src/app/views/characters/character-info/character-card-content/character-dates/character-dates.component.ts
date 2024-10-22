@@ -9,11 +9,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { character } from '../../../../../models/characters';
 import { ToolsService } from '../../../../../services/tools.service';
+import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 
 @Component({
   selector: 'app-character-dates',
   standalone: true,
-  imports: [MatListModule, MatCardModule],
+  imports: [MatListModule, MatCardModule, SectionHeaderComponent],
   templateUrl: './character-dates.component.html',
   styleUrl: './character-dates.component.css',
 })

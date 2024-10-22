@@ -1,12 +1,17 @@
 import { Component, Input } from '@angular/core';
+import { character } from '../../../../../models/characters';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { character } from '../../../../../models/characters';
+import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 
 @Component({
   selector: 'app-character-basic-info',
   standalone: true,
-  imports: [MatListModule, MatCardModule],
+  imports: [
+    MatListModule,
+    MatCardModule,
+    SectionHeaderComponent,
+  ],
   templateUrl: './character-basic-info.component.html',
   styleUrl: './character-basic-info.component.css',
 })

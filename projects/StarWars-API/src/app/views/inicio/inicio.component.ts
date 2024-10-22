@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../layouts/header/header.component';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css',
 })

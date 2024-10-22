@@ -46,7 +46,7 @@ export class FilmInfoComponent {
     // Obtener información del personaje
     this.filmInfo = await this.filmService.obtener(this.id);
     this.name = this.filmInfo.title;
-    this.router.navigate(['films', this.id]);
+    this.router.navigate(['film', this.id]);
     // console.log('Info:', this.filmInfo);
   }
 }

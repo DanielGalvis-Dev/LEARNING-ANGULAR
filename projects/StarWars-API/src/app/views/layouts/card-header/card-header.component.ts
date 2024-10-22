@@ -12,10 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-interface MyCallback {
-  (data: any): void;
+interface buttons {
+  action: string;
+  icon: string;
+  event: () => void;
+  class: string;
+  position: string;
+  disabled: boolean;
 }
-
 @Component({
   selector: 'app-card-header',
   standalone: true,
@@ -34,88 +38,30 @@ export class CardHeaderComponent implements OnChanges {
   constructor(private router: Router) {}
 
   //
-  hiddenNext = false;
-  hiddenPrev = false;
-
-  //
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['count'] && changes['count'].currentValue !== 0) {
-      this.count;
-      // this.validation();
-    }
-  }
-
-  first() {
-    this.fetchData.emit(1);
-  }
-
-  // Ver el resultado anterior
-  prev() {
-    if (this.idP > 0) {
-      this.idP--;
-      this.fetchData.emit(this.idP);
-    }
-    this.validation();
-  }
-
-  //  Ver el resuldato siguiente
-  next() {
-    if (this.idP < this.count) {
-      this.idP++;
-      this.fetchData.emit(this.idP);
-    }
-    this.validation();
-  }
-
-  last() {
-    this.fetchData.emit(this.count);
-  }
-
-  validation() {
-    this.actions.forEach((button) => {
-      const id = this.idP;
-      const count = this.count;
-      let hidden = button.hidden;
-      const action = button.action;
-
-      //
-      hidden = id === 1 && action === 'Previous' ? true : false;
-
-      //
-      hidden = id === count && action === 'Next' ? true : false;
-
-      //
-      hidden = id === count && action === 'First' ? true : false;
-
-      //
-      hidden = id === count && action === 'Last' ? true : false;
-    });
-  }
-
-  actions = [
+  actions: buttons[] = [
     {
       action: 'First',
       icon: 'first_page',
       event: this.first.bind(this),
-      class: 'firs-button',
+      class: 'first-button',
       position: 'above',
-      hidden: false,
+      disabled: false,
     },
     {
       action: 'Previous',
-      icon: 'arrow_back',
+      icon: 'navigate_before',
       event: this.prev.bind(this),
       class: 'prev-button',
       position: 'above',
-      hidden: false,
+      disabled: false,
     },
     {
       action: 'Next',
-      icon: 'arrow_forward',
+      icon: 'navigate_next',
       event: this.next.bind(this),
       class: 'next-button',
       position: 'above',
-      hidden: false,
+      disabled: false,
     },
     {
       action: 'Last',
@@ -123,7 +69,59 @@ export class CardHeaderComponent implements OnChanges {
       event: this.last.bind(this),
       class: 'last-button',
       position: 'above',
-      hidden: false,
+      disabled: false,
     },
   ];
+
+  //
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['count'] &&
+      changes['count'].currentValue !== 0 &&
+      changes['idP'] &&
+      changes['idP'].currentValue !== 0
+    ) {
+      this.validation(this.idP);
+    }
+  }
+
+  first() {
+    this.fetchData.emit(1);
+    this.validation(1);
+  }
+
+  // Ver el resultado anterior
+  prev() {
+    if (this.idP > 0) {
+      this.idP--;
+      this.fetchData.emit(this.idP);
+      this.validation(this.idP);
+    }
+  }
+
+  //  Ver el resuldato siguiente
+  next() {
+    if (this.idP < this.count) {
+      this.idP++;
+      this.fetchData.emit(this.idP);
+      this.validation(this.idP);
+    }
+  }
+
+  last() {
+    this.fetchData.emit(this.count);
+    this.validation(this.count);
+  }
+
+  validation(id: number) {
+    const actionsToDisable =
+      id === 1
+        ? ['First', 'Previous']
+        : id === this.count
+        ? ['Last', 'Next']
+        : [];
+    this.actions.forEach((btnC) => {
+      btnC.disabled = actionsToDisable.includes(btnC.action);
+    });
+  }
 }

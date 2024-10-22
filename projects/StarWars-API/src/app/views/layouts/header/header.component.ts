@@ -3,10 +3,14 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { HeaderDesktopComponent } from './header-desktop/header-desktop.component';
+import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 
-interface buttons {
+export interface buttons {
   name: string;
+  icon: string;
   event: (button: buttons) => void;
   disabled: boolean;
   active: boolean;
@@ -15,7 +19,12 @@ interface buttons {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, NgClass],
+  imports: [
+    MatToolbarModule,
+    HeaderDesktopComponent,
+    HeaderMobileComponent,
+    NgClass,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -27,36 +36,42 @@ export class HeaderComponent {
   actions: buttons[] = [
     {
       name: 'characters',
+      icon: 'person',
       event: this.characters.bind(this),
       disabled: false,
       active: false,
     },
     {
       name: 'planets',
+      icon: 'public',
       event: this.planets.bind(this),
       disabled: true,
       active: false,
     },
     {
       name: 'films',
+      icon: 'movie',
       event: this.films.bind(this),
       disabled: false,
       active: false,
     },
     {
       name: 'species',
+      icon: 'groups',
       event: this.species.bind(this),
       disabled: true,
       active: false,
     },
     {
       name: 'vehicles',
+      icon: 'directions_car',
       event: this.vehicles.bind(this),
       disabled: true,
       active: false,
     },
     {
       name: 'starships',
+      icon: 'rocket_launch',
       event: this.starships.bind(this),
       disabled: true,
       active: false,

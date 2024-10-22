@@ -6,21 +6,20 @@
   padding: 0 80px;
   background: linear-gradient(to right, #0000b7, #5e00b7 60%);
   color: #fff;
-
-  button {
-    color: #fff;
-    transition: 0.3s;
-  }
-
-  button:hover {
-    background: #00000055;
-  }
 }
 
-button:disabled {
-  opacity: 0.6;
+.header-mobile {
+  display: none;
 }
 
-.active {
-  background: #00000055;
+@media (max-width: 770px) {
+  .header {
+    padding: 0 40px;
+  }
+  .header-desktop {
+    display: none;
+  }
+  .header-mobile {
+    display: block;
+  }
 }

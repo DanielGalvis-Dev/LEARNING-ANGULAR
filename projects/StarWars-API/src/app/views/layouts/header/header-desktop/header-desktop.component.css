@@ -1,0 +1,16 @@
+button {
+  color: #fff !important;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00000055;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+.active {
+  background: #00000055;
+}

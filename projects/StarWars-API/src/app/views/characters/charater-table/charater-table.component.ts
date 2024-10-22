@@ -74,6 +74,6 @@ export class CharaterTableComponent implements AfterViewInit, OnInit {
   // Ver informacion detallada del personaje
   viewInfo(object: character) {
     const id = this.toolsService.extractOfUrl(object.url!);
-    this.router.navigate(['characters', id]);
+    this.router.navigate(['character', id]);
   }
 }

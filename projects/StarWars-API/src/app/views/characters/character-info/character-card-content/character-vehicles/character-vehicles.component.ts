@@ -11,11 +11,13 @@ import { vehiclesResults } from '../../../../../models/vehicles';
 import { character } from '../../../../../models/characters';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
+import { CardContentComponent } from "../../../../layouts/card-content/card-content.component";
 
 @Component({
   selector: 'app-character-vehicles',
   standalone: true,
-  imports: [MatListModule, MatCardModule],
+  imports: [MatListModule, MatCardModule, SectionHeaderComponent, CardContentComponent],
   templateUrl: './character-vehicles.component.html',
   styleUrl: './character-vehicles.component.css',
 })

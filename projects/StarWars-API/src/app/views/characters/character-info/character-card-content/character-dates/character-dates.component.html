@@ -1,7 +1,7 @@
 <mat-card class="card-content" appearance="outlined">
-  <mat-card-header class="header-sub-padre">
-    <mat-card-subtitle class="subtitle">FECHAS</mat-card-subtitle>
-  </mat-card-header>
-  <mat-list-item> <strong>Creado</strong> {{ created }} </mat-list-item>
-  <mat-list-item> <strong>Editado</strong> {{ edited }} </mat-list-item>
+  <app-section-header [icon]="'calendar_month'" [title]="'DATES'" />
+  <mat-card-content class="dates-content">
+    <mat-list-item> <strong>Creado</strong> {{ created }} </mat-list-item>
+    <mat-list-item> <strong>Editado</strong> {{ edited }} </mat-list-item>
+  </mat-card-content>
 </mat-card>

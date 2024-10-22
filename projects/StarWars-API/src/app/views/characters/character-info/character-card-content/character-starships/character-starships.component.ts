@@ -11,11 +11,12 @@ import { StarshipsService } from '../../../../../services/starships.service';
 import { character } from '../../../../../models/characters';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 
 @Component({
   selector: 'app-character-starships',
   standalone: true,
-  imports: [MatListModule, MatCardModule],
+  imports: [MatListModule, MatCardModule, SectionHeaderComponent],
   templateUrl: './character-starships.component.html',
   styleUrl: './character-starships.component.css',
 })

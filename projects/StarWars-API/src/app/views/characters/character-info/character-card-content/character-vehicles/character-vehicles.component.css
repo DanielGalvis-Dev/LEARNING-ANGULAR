@@ -1,0 +1,15 @@
+.vehicles-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .vehicles-content * {
+    flex: 50%;
+  }
+  
+  @media (max-width: 970px) {
+    .vehicles-content {
+      display: block;
+    }
+  }
+  

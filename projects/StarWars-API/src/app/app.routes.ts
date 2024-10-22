@@ -19,6 +19,6 @@ export const routes: Routes = [
   { path: 'species', component: SpeciesComponent },
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'starships', component: StarshipsComponent },
-  { path: 'characters/:id', component: CharacterInfoComponent },
-  { path: 'films/:id', component: FilmInfoComponent },
+  { path: 'character/:id', component: CharacterInfoComponent },
+  { path: 'film/:id', component: FilmInfoComponent },
 ];

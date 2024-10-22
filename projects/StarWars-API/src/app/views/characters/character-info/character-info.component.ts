@@ -43,7 +43,7 @@ export class CharacterInfoComponent implements OnInit {
 
     // Obtener información del personaje
     this.characterInfo = await this.characterService.obtener(this.id);
-    this.router.navigate(['characters', this.id]);
+    this.router.navigate(['character', this.id]);
     this.name = this.characterInfo.name;
     // console.log('Info:', this.characterInfo);
   }

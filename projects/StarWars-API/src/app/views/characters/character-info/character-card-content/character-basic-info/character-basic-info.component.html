@@ -1,26 +1,26 @@
 <mat-card class="card-content" appearance="outlined">
-  <mat-card-header class="header-sub-padre">
-    <mat-card-subtitle class="subtitle"> INFORMACIÓN BÁSICA</mat-card-subtitle>
-  </mat-card-header>
-  <mat-list-item>
-    <strong>Altura</strong> {{ characterInfo.height }} cm
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Peso</strong> {{ characterInfo.mass }} kg
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Color de pelo</strong> {{ characterInfo.hair_color }}
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Color de piel</strong> {{ characterInfo.skin_color }}
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Color de ojos</strong> {{ characterInfo.eye_color }}
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Año de nacimiento</strong> {{ characterInfo.birth_year }}
-  </mat-list-item>
-  <mat-list-item>
-    <strong>Género</strong> {{ characterInfo.gender }}
-  </mat-list-item>
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content class="basic-info-content">
+    <mat-list-item>
+      <strong>Altura</strong> {{ characterInfo.height }} cm
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Peso</strong> {{ characterInfo.mass }} kg
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Color de pelo</strong> {{ characterInfo.hair_color }}
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Color de piel</strong> {{ characterInfo.skin_color }}
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Color de ojos</strong> {{ characterInfo.eye_color }}
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Género</strong> {{ characterInfo.gender }}
+    </mat-list-item>
+    <mat-list-item>
+      <strong>Año de nacimiento</strong> {{ characterInfo.birth_year }}
+    </mat-list-item>
+  </mat-card-content>
 </mat-card>

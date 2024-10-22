@@ -1,12 +1,12 @@
 <mat-card class="card-content" appearance="outlined">
-  <mat-card-header class="header-sub-padre">
-    <mat-card-subtitle class="subtitle"> NAVES ESPACIALES </mat-card-subtitle>
-  </mat-card-header>
-  @if (characterInfo.starships.length > 0) {
-  <!--  -->
-  @for (starship of starshipsData; track starship) {
-  <mat-list-item> - {{ starship.name }} </mat-list-item>
-  } } @else {
-  <mat-list-item> - unknown </mat-list-item>
-  }
+  <app-section-header [icon]="'rocket_launch'" [title]="'STARSHIPS'" />
+  <mat-card-content class="starships-content">
+    @if (characterInfo.starships.length > 0) {
+    <!--  -->
+    @for (starship of starshipsData; track starship) {
+    <mat-list-item> {{ starship.name }} </mat-list-item>
+    } } @else {
+    <mat-list-item> unknown </mat-list-item>
+    }
+  </mat-card-content>
 </mat-card>

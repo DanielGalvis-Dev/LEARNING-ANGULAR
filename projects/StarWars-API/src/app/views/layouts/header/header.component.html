@@ -3,14 +3,6 @@
     STAR<strong>WARS API</strong>
   </span>
   <span class="spacer"></span>
-  @for (button of actions; track button) {
-  <button
-    mat-button
-    [ngClass]="{ active: button.active }"
-    (click)="button.event(button)"
-    disabled="{{ button.disabled }}"
-  >
-    {{ button.name }}
-  </button>
-  }
+  <app-header-desktop [actions]="actions" class="header-desktop" />
+  <app-header-mobile [actions]="actions" class="header-mobile" />
 </mat-toolbar>

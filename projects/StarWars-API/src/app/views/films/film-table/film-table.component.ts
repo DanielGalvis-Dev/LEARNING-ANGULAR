@@ -41,6 +41,6 @@ export class FilmTableComponent {
   // Ver informacion detallada del personaje
   viewInfo(object: filmsResults) {
     const id = this.toolService.extractOfUrl(object.url!);
-    this.router.navigate(['films', id]);
+    this.router.navigate(['film', id]);
   }
 }

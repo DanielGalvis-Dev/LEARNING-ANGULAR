@@ -1,56 +1,21 @@
 @if (name) {
-<mat-card-header class="Card-info-header">
+<mat-card-header class="card-info-header">
   <mat-card-title>
     {{ name.toUpperCase() }}
   </mat-card-title>
-  <mat-card-actions>
-    <!-- Boton para ver la primera pagina -->
+  <mat-card-actions class="card-info-actions">
+    @for (button of actions; track button) {
     <button
-      [hidden]="hiddenPrev"
       mat-icon-button
-      matTooltip="Anterior"
-      matTooltipPosition="left"
-      class="firs-button"
-      (click)="prev()"
-    >
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-
-    <!-- Boton para ver la pagina anterior -->
-    <button
-      [hidden]="hiddenPrev"
-      mat-icon-button
-      matTooltip="Anterior"
-      matTooltipPosition="left"
-      class="prev-button"
-      (click)="prev()"
-    >
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-
-    <!-- Boton para ver la pagina siguiente -->
-    <button
-      [hidden]="hiddenNext"
-      mat-icon-button
-      matTooltip="Siguiente"
+      class="{{ button.class }}"
+      matTooltip="{{ button.action }}"
       matTooltipPosition="above"
-      class="next-button"
-      (click)="next()"
+      (click)="button.event()"
+      [disabled]="button.disabled"
     >
-      <mat-icon>arrow_forward</mat-icon>
+      <mat-icon>{{ button.icon }}</mat-icon>
     </button>
-
-    <!-- Boton para ver la ultima pagina -->
-    <button
-      [hidden]="hiddenPrev"
-      mat-icon-button
-      matTooltip="ult"
-      matTooltipPosition="left"
-      class="last-button"
-      (click)="prev()"
-    >
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+    }
   </mat-card-actions>
 </mat-card-header>
 }

@@ -13,11 +13,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { planetsResults } from '../../../../../models/planets';
 import { PlanetsService } from '../../../../../services/planets.service';
+import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 
 @Component({
   selector: 'app-character-origin',
   standalone: true,
-  imports: [MatListModule, MatCardModule],
+  imports: [MatListModule, MatCardModule, SectionHeaderComponent],
   templateUrl: './character-origin.component.html',
   styleUrl: './character-origin.component.css',
 })
