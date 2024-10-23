@@ -1,3 +1,5 @@
-.card-content {
-    width: 100%;
+.link-item {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
 }

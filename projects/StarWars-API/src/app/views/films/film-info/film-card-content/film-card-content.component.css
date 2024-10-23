@@ -1,6 +1,6 @@
 .film-card-content {
   display: grid;
-  grid-template-columns: repeat(3, calc(3 / 3));
+  grid-template-columns: repeat(3, auto);
   grid-template-areas:
     "basic-info characters species"
     "planets characters species"
@@ -35,4 +35,30 @@
 
 .film-dates {
   grid-area: dates;
+}
+
+@media (max-width: 900px) {
+  .film-card-content {
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas:
+      "basic-info characters"
+      "planets characters"
+      "species characters"
+      "vehicles starships"
+      "dates dates";
+  }
+}
+
+@media (max-width: 700px) {
+  .film-card-content {
+    grid-template-columns: repeat(1, auto);
+    grid-template-areas:
+      "basic-info"
+      "planets"
+      "species"
+      "characters"
+      "vehicles"
+      "starships"
+      "dates";
+  }
 }

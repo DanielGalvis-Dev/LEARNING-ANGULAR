@@ -4,3 +4,15 @@
   background: linear-gradient(to top left, #ebebeb, #f4f4f4);
   position: relative;
 }
+
+@media (max-width: 1024px) {
+  .card-info {
+    margin: 1rem 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-info {
+    margin: 1rem auto;
+  }
+}

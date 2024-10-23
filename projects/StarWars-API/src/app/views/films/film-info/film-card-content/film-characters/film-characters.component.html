@@ -3,8 +3,8 @@
   <mat-card-content>
     <mat-list>
       @for (character of characterData; track character) {
-      <mat-list-item class="character-item">
-        <span (click)="goCharacter(character.url)">{{ character.name }}</span>
+      <mat-list-item class="link-item">
+        <span (click)="seeCharacter(character.url)">{{ character.name }}</span>
       </mat-list-item>
       }
     </mat-list>

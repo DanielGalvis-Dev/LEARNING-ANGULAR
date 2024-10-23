@@ -16,3 +16,17 @@ body {
   border: none !important;
   background: none !important;
 }
+
+.link-item::after {
+  content: "";
+  width: 0px;
+  height: 1.5px;
+  background: #0000b7;
+  position: absolute;
+  bottom: 12px;
+  transition: 0.3s;
+}
+
+.link-item:hover::after {
+  width: 100%;
+}

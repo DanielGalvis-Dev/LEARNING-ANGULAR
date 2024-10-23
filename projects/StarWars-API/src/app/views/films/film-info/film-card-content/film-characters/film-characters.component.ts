@@ -42,7 +42,7 @@ export class FilmCharactersComponent implements OnChanges {
     }
   }
 
-  goCharacter(url: string) {
+  seeCharacter(url: string) {
     const id = parseInt(this.toolService.extractOfUrl(url));
     this.router.navigate(['character', id]);
   }

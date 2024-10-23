@@ -1,15 +1,5 @@
-.starships-content {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .starships-content * {
-    flex: 50%;
-  }
-  
-  @media (max-width: 970px) {
-    .starships-content {
-      display: block;
-    }
-  }
-  
+.link-item {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
+}

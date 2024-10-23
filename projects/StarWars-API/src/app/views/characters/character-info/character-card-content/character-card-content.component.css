@@ -1,12 +1,11 @@
 .cardList {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
-  /* grid-template-rows: repeat(4, auto); */
+  grid-template-columns: repeat(3, auto);
   grid-template-areas:
-    "basicInfo films"
-    "origen origen"
-    "vehicles starships"
-    "dates dates";
+    "basicInfo films vehicles"
+    "basicInfo films origen"
+    "basicInfo starships origen"
+    "dates dates dates";
 }
 
 .basicInfo {
@@ -23,7 +22,6 @@
 }
 .origen {
   grid-area: origen;
-  display: flex;
 }
 .films {
   grid-area: films;
@@ -36,10 +34,6 @@
       "basicInfo films"
       "vehicles starships"
       "dates dates";
-  }
-
-  .origen {
-    display: block;
   }
 }
 
