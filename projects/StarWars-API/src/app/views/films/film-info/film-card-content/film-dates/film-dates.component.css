@@ -7,7 +7,7 @@
     flex: 50%;
   }
   
-  @media (max-width: 970px) {
+  @media (max-width: 750px) {
     .dates-content {
       display: block;
     }

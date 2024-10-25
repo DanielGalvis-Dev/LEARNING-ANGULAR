@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToolsService {
+  constructor(private router: Router) {}
   // Herramienta para extaer el parameto page o el id
   extractOfUrl(url: string) {
     let separeUrl: string[] = [];
@@ -56,5 +58,10 @@ export class ToolsService {
 
     const newData = await Promise.all(newInfo);
     return newData;
+  }
+
+  goLocation(url: string, location: string) {
+    const id = parseInt(this.extractOfUrl(url));
+    this.router.navigate([location, id]);
   }
 }

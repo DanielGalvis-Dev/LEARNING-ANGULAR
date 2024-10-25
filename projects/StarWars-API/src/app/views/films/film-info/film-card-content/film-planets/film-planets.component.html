@@ -2,8 +2,10 @@
   <app-section-header [icon]="'public'" [title]="'PLANETS'" />
   <mat-card-content>
     <mat-list>
-      @for (planet of planetNames; track planet) {
-      <mat-list-item>{{ planet }}</mat-list-item>
+      @for (planet of planetData; track planet) {
+      <mat-list-item class="link-item">
+        <span (click)="seePlanet(planet.url)">{{ planet.name }}</span>
+      </mat-list-item>
       }
     </mat-list>
   </mat-card-content>

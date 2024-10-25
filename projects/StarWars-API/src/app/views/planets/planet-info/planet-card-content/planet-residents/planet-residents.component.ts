@@ -5,37 +5,35 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
-import { CharactersService } from '../../../../../services/characters.service';
-import { ToolsService } from '../../../../../services/tools.service';
+import { planetsResults } from '../../../../../models/planets';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { character } from '../../../../../models/characters';
-import { Router } from '@angular/router';
+import { ToolsService } from '../../../../../services/tools.service';
+import { CharactersService } from '../../../../../services/characters.service';
 
 @Component({
-  selector: 'app-film-characters',
+  selector: 'app-planet-residents',
   standalone: true,
   imports: [MatCardModule, MatListModule, SectionHeaderComponent],
-  templateUrl: './film-characters.component.html',
-  styleUrl: './film-characters.component.css',
+  templateUrl: './planet-residents.component.html',
+  styleUrl: './planet-residents.component.css',
 })
-export class FilmCharactersComponent implements OnChanges {
-  @Input() filmInfo!: filmsResults;
+export class PlanetResidentsComponent implements OnChanges {
+  @Input() planetInfo!: planetsResults;
   private characterService = inject(CharactersService);
   private toolService = inject(ToolsService);
-  private router = inject(Router);
   characterData: character[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['filmInfo'] && changes['filmInfo'].currentValue) {
+    if (changes['planetInfo'] && changes['planetInfo'].currentValue) {
       this.obtener();
     }
   }
 
   async obtener() {
-    const data = this.filmInfo.characters;
+    const data = this.planetInfo.residents;
     const service = this.characterService.obtener.bind(this.characterService);
     if (data) {
       this.characterData = await this.toolService.getData(data, service);

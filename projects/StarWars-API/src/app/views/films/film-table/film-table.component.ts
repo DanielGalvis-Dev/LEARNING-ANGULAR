@@ -6,11 +6,12 @@ import { ToolsService } from '../../../services/tools.service';
 import { Router } from '@angular/router';
 import { films, filmsResults } from '../../../models/films';
 import { FilmsService } from '../../../services/films.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-film-table',
   standalone: true,
-  imports: [MatTableModule, MatCardModule, MatButtonModule],
+  imports: [MatTableModule, MatCardModule, MatButtonModule, MatTooltipModule],
   templateUrl: './film-table.component.html',
   styleUrl: './film-table.component.css',
 })

@@ -14,18 +14,19 @@ import { MatCardModule } from '@angular/material/card';
 import { planetsResults } from '../../../../../models/planets';
 import { PlanetsService } from '../../../../../services/planets.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-character-origin',
   standalone: true,
-  imports: [MatListModule, MatCardModule, SectionHeaderComponent],
+  imports: [MatListModule, MatCardModule, SectionHeaderComponent, NgClass],
   templateUrl: './character-origin.component.html',
   styleUrl: './character-origin.component.css',
 })
 export class CharacterOriginComponent implements OnChanges {
   @Input() characterInfo!: character;
 
-  toolsService = inject(ToolsService);
+  toolService = inject(ToolsService);
   speciesService = inject(SpeciesService);
   planetsService = inject(PlanetsService);
   planetsData: planetsResults = {} as planetsResults;
@@ -41,18 +42,26 @@ export class CharacterOriginComponent implements OnChanges {
   async listPlanets() {
     const platet = this.characterInfo.homeworld.toString();
     if (platet.length > 0) {
-      let id = parseInt(this.toolsService.extractOfUrl(platet));
+      let id = parseInt(this.toolService.extractOfUrl(platet));
       this.planetsData = await this.planetsService.obtener(id);
       // console.log(this.planetsData);
     }
   }
 
+  seePlanet(url: string) {
+    this.toolService.goLocation(url, 'planet');
+  }
+
   async listSpecies() {
     const specie = this.characterInfo.species.toString();
     if (specie.length > 0) {
-      let id = parseInt(this.toolsService.extractOfUrl(specie));
+      let id = parseInt(this.toolService.extractOfUrl(specie));
       this.speciesData = await this.speciesService.obtener(id);
       // console.log(this.speciesData);
     }
+  }
+
+  seeSpecie(url: string) {
+    this.toolService.goLocation(url, 'specie');
   }
 }

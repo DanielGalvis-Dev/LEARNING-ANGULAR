@@ -1,0 +1,11 @@
+@if (planetInfo.residents) {
+<mat-list
+  class="planet-card-content"
+  ngClass="{{ planetInfo.residents.length < 5 ? 'isSmall' : '' }}"
+>
+  <app-planet-basic-info class="planet-basic-info" [planetInfo]="planetInfo" />
+  <app-planet-residents class="planet-residents" [planetInfo]="planetInfo" />
+  <app-planet-films class="planet-films" [planetInfo]="planetInfo" />
+  <app-planet-dates class="planet-dates" [planetInfo]="planetInfo" />
+</mat-list>
+}

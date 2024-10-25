@@ -45,7 +45,7 @@ export class HeaderComponent {
       name: 'planets',
       icon: 'public',
       event: this.planets.bind(this),
-      disabled: true,
+      disabled: false,
       active: false,
     },
     {

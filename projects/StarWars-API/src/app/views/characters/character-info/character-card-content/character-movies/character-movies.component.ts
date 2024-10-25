@@ -29,7 +29,6 @@ export class CharacterMoviesComponent implements OnChanges {
   private filmsService = inject(FilmsService);
   private toolService = inject(ToolsService);
   filmsData: filmsResults[] = [];
-  isLoadingNewData = false; // Variable para controlar la carga de nuevos datos
   private router = inject(Router);
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,9 +38,6 @@ export class CharacterMoviesComponent implements OnChanges {
   }
 
   async getFilms() {
-    // Iniciar el estado de carga de nuevos datos
-    this.isLoadingNewData = true;
-
     const filmRequests = this.characterInfo.films.map(async (film) => {
       const id = parseInt(this.toolService.extractOfUrl(film));
       const res = await this.filmsService.obtener(id);
@@ -50,35 +46,10 @@ export class CharacterMoviesComponent implements OnChanges {
 
     // Esperar a que todos los films nuevos se carguen
     const newFilmsData = await Promise.all(filmRequests);
-
-    // Comparar los arrays de forma simple (longitud y contenido)
-    if (!this.areArraysEqual(this.filmsData, newFilmsData)) {
-      // Actualizar los datos solo si son diferentes
-      this.filmsData = newFilmsData;
-    }
-
-    // Finalizar el estado de carga
-    this.isLoadingNewData = false;
-  }
-
-  // Función para comparar los arrays de forma profunda (si las propiedades del objeto son iguales)
-  areArraysEqual(arr1: filmsResults[], arr2: filmsResults[]): boolean {
-    if (arr1.length !== arr2.length) {
-      return false;
-    }
-
-    // Comparar cada objeto en el array (comparación profunda)
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i].title !== arr2[i].title) {
-        return false;
-      }
-    }
-
-    return true;
+    this.filmsData = newFilmsData;
   }
 
   seeFilm(url: string) {
-    const id = parseInt(this.toolService.extractOfUrl(url));
-    this.router.navigate(['film', id]);
+    this.toolService.goLocation(url, 'film');
   }
 }

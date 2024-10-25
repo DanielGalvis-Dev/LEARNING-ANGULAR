@@ -1,0 +1,12 @@
+<mat-card class="card-info" appearance="outlined">
+    <app-card-header
+      (fetchData)="obtener($event)"
+      [count]="count"
+      [idP]="id"
+      [name]="name"
+    />
+    <mat-card-content>
+      <app-planet-card-content [planetInfo]="planetInfo" />
+    </mat-card-content>
+  </mat-card>
+  

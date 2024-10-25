@@ -1,4 +1,4 @@
-.cardList {
+.character-card-content {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-areas:
@@ -28,7 +28,7 @@
 }
 
 @media (max-width: 900px) {
-  .cardList {
+  .character-card-content {
     grid-template-areas:
       "basicInfo origen"
       "basicInfo films"
@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 680px) {
-  .cardList {
+  .character-card-content {
     grid-template-columns: repeat(1, auto);
     grid-template-areas:
       "basicInfo"

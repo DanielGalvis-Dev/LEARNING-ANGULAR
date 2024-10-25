@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ToolsService } from '../../../../../services/tools.service';
 import { PlanetsService } from '../../../../../services/planets.service';
+import { planetsResults } from '../../../../../models/planets';
 
 @Component({
   selector: 'app-film-planets',
@@ -23,7 +24,7 @@ export class FilmPlanetsComponent implements OnChanges {
   @Input() filmInfo!: filmsResults;
   toolService = inject(ToolsService);
   planetService = inject(PlanetsService);
-  planetNames: string[] = [];
+  planetData: planetsResults[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filmInfo'] && changes['filmInfo'].currentValue) {
@@ -35,9 +36,11 @@ export class FilmPlanetsComponent implements OnChanges {
     const data = this.filmInfo.planets;
     const service = this.planetService.obtener.bind(this.planetService);
     if (data) {
-      this.planetNames = (await this.toolService.getData(data, service)).map(
-        (data) => data.name
-      );
+      this.planetData = await this.toolService.getData(data, service);
     }
+  }
+
+  seePlanet(url: string) {
+    this.toolService.goLocation(url, 'planet');
   }
 }

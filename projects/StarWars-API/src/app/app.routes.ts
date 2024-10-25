@@ -8,6 +8,7 @@ import { PlanetsComponent } from './views/planets/planets.component';
 import { SpeciesComponent } from './views/species/species.component';
 import { VehiclesComponent } from './views/vehicles/vehicles.component';
 import { StarshipsComponent } from './views/starships/starships.component';
+import { PlanetInfoComponent } from './views/planets/planet-info/planet-info.component';
 
 export const routes: Routes = [
   // { path: '', component: CharactersComponent },
@@ -20,5 +21,9 @@ export const routes: Routes = [
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'starships', component: StarshipsComponent },
   { path: 'character/:id', component: CharacterInfoComponent },
+  { path: 'planet/:id', component: PlanetInfoComponent },
   { path: 'film/:id', component: FilmInfoComponent },
+  { path: 'specie/:id', component: PlanetInfoComponent },
+  { path: 'vehicle/:id', component: PlanetInfoComponent },
+  { path: 'starship/:id', component: PlanetInfoComponent },
 ];
