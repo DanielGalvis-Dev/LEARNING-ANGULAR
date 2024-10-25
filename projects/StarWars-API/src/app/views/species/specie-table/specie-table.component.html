@@ -1,0 +1,36 @@
+<table mat-table [dataSource]="dataSource">
+  <!-- Position Column -->
+  <ng-container matColumnDef="info">
+    <th mat-header-cell *matHeaderCellDef>Name and classification</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-card-header style="padding: 10px 16px">
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>{{ element.name }}</mat-card-title>
+        <mat-card-subtitle>{{ element.classification }}</mat-card-subtitle>
+      </mat-card-header>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-button
+        (click)="viewInfo(element)"
+        matTooltip="Ver mas información acerca de esta especie"
+        matTooltipPosition="right"
+      >
+        Ver mas...
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+  hidePageSize="false"
+  [pageSizeOptions]="pageSizeOptions"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>

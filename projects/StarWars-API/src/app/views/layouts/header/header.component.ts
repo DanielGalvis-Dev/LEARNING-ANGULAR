@@ -59,7 +59,7 @@ export class HeaderComponent {
       name: 'species',
       icon: 'groups',
       event: this.species.bind(this),
-      disabled: true,
+      disabled: false,
       active: false,
     },
     {

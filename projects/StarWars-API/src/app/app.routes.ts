@@ -9,6 +9,7 @@ import { SpeciesComponent } from './views/species/species.component';
 import { VehiclesComponent } from './views/vehicles/vehicles.component';
 import { StarshipsComponent } from './views/starships/starships.component';
 import { PlanetInfoComponent } from './views/planets/planet-info/planet-info.component';
+import { SpecieInfoComponent } from './views/species/specie-info/specie-info.component';
 
 export const routes: Routes = [
   // { path: '', component: CharactersComponent },
@@ -23,7 +24,7 @@ export const routes: Routes = [
   { path: 'character/:id', component: CharacterInfoComponent },
   { path: 'planet/:id', component: PlanetInfoComponent },
   { path: 'film/:id', component: FilmInfoComponent },
-  { path: 'specie/:id', component: PlanetInfoComponent },
+  { path: 'specie/:id', component: SpecieInfoComponent },
   { path: 'vehicle/:id', component: PlanetInfoComponent },
   { path: 'starship/:id', component: PlanetInfoComponent },
 ];

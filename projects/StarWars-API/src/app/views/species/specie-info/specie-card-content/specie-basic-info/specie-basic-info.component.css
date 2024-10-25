@@ -1,0 +1,13 @@
+.link-item {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
+}
+
+.link-item::after {
+  left: 120px;
+}
+
+p {
+  white-space: normal;
+}
