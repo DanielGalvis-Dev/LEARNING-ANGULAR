@@ -8,11 +8,11 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { FilmsService } from '../../../../../services/films.service';
 import { Router } from '@angular/router';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 
 @Component({
   selector: 'app-planet-films',

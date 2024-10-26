@@ -5,10 +5,10 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { speciesResults } from '../../../../../models/species';
+import { speciesResults } from '../../../../../models/species.model';
 import { FilmsService } from '../../../../../services/films.service';
 import { ToolsService } from '../../../../../services/tools.service';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SectionHeaderComponent } from "../../../../layouts/section-header/section-header.component";

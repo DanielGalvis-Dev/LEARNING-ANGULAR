@@ -1,10 +1,12 @@
 <mat-card appearance="outlined" class="card-content">
-    <app-section-header [icon]="'directions_car'" [title]="'VEHICLES'" />
-    <mat-card-content>
-      <mat-list>
-        @for (vehicle of vehicleNames; track vehicle) {
-        <mat-list-item>{{ vehicle }}</mat-list-item>
-        }
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+  <app-section-header [icon]="'directions_car'" [title]="'VEHICLES'" />
+  <mat-card-content>
+    <mat-list>
+      @for (vehicle of vehicleData; track vehicle.name) {
+      <mat-list-item class="link-item">
+        <span (click)="seeVehicle(vehicle.url)">{{ vehicle.name }} </span>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

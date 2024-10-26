@@ -73,7 +73,7 @@ export class HeaderComponent {
       name: 'starships',
       icon: 'rocket_launch',
       event: this.starships.bind(this),
-      disabled: true,
+      disabled: false,
       active: false,
     },
   ];

@@ -6,7 +6,7 @@ import { CharacterStarshipsComponent } from './character-starships/character-sta
 import { CharacterVehiclesComponent } from './character-vehicles/character-vehicles.component';
 import { CharacterDatesComponent } from './character-dates/character-dates.component';
 import { CharacterOriginComponent } from './character-origin/character-origin.component';
-import { character } from '../../../../models/characters';
+import { character } from '../../../../models/characters.model';
 
 @Component({
   selector: 'app-character-card-content',

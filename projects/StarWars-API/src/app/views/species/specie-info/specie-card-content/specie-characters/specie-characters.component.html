@@ -4,7 +4,7 @@
     <mat-list>
       @if (characterData.length > 0) {
       <!--  -->
-      @for (character of characterData; track character) {
+      @for (character of characterData; track character.name) {
       <mat-list-item class="link-item">
         <span (click)="seeCharacter(character.url)">{{ character.name }}</span>
       </mat-list-item>

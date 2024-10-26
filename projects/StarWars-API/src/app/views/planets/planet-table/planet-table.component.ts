@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ToolsService } from '../../../services/tools.service';
 import { PlanetsService } from '../../../services/planets.service';
-import { planets, planetsResults } from '../../../models/planets';
+import { planets, planetsResults } from '../../../models/planets.model';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -43,8 +43,6 @@ export class PlanetTableComponent implements AfterViewInit, OnInit {
   nextPage: string = '';
   pageSizeOptions: number[] = [8, 20];
   population: number = 0;
-  // Constructor
-  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.list();
@@ -79,8 +77,7 @@ export class PlanetTableComponent implements AfterViewInit, OnInit {
   }
 
   // Ver informacion detallada del personaje
-  viewInfo(object: planetsResults) {
-    const id = this.toolsService.extractOfUrl(object.url!);
-    this.router.navigate(['planet', id]);
+  viewInfo(url: string) {
+    const id = this.toolsService.goLocation(url, 'planet')
   }
 }

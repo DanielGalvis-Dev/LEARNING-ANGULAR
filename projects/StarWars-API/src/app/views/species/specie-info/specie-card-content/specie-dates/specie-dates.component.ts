@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { speciesResults } from '../../../../../models/species';
+import { speciesResults } from '../../../../../models/species.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { MatCardModule } from '@angular/material/card';

@@ -5,10 +5,10 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { starshipsResults } from '../../../../../models/starships';
+import { starshipsResults } from '../../../../../models/starships.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { StarshipsService } from '../../../../../services/starships.service';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
@@ -40,5 +40,9 @@ export class CharacterStarshipsComponent implements OnChanges {
       let res = await this.starshipsService.obtener(id);
       this.starshipsData.push(res);
     });
+  }
+
+  seeStarship(url: string) {
+    this.toolsService.goLocation(url, 'starship');
   }
 }

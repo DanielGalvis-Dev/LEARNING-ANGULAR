@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { MatListModule } from '@angular/material/list';

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { apiUrl } from '../settings/appsettings';
-import { vehicles, vehiclesResults } from '../models/vehicles';
+import { vehicles, vehiclesResults } from '../models/vehicles.model';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({

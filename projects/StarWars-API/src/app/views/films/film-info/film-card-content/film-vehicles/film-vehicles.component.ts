@@ -5,12 +5,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { ToolsService } from '../../../../../services/tools.service';
 import { VehiclesService } from '../../../../../services/vehicles.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { vehiclesResults } from '../../../../../models/vehicles.model';
 
 @Component({
   selector: 'app-film-vehicles',
@@ -23,7 +24,7 @@ export class FilmVehiclesComponent implements OnChanges {
   @Input() filmInfo!: filmsResults;
   toolService = inject(ToolsService);
   vehicleService = inject(VehiclesService);
-  vehicleNames: string[] = [];
+  vehicleData: vehiclesResults[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filmInfo'] && changes['filmInfo'].currentValue) {
@@ -35,9 +36,11 @@ export class FilmVehiclesComponent implements OnChanges {
     const data = this.filmInfo.vehicles;
     const service = this.vehicleService.obtener.bind(this.vehicleService);
     if (data) {
-      this.vehicleNames = (await this.toolService.getData(data, service)).map(
-        (data) => data.name
-      );
+      this.vehicleData = await this.toolService.getData(data, service);
     }
+  }
+
+  seeVehicle(url: string) {
+    this.toolService.goLocation(url, 'vehicle');
   }
 }

@@ -7,17 +7,22 @@ import {
 } from '@angular/core';
 import { VehiclesService } from '../../../../../services/vehicles.service';
 import { ToolsService } from '../../../../../services/tools.service';
-import { vehiclesResults } from '../../../../../models/vehicles';
-import { character } from '../../../../../models/characters';
+import { vehiclesResults } from '../../../../../models/vehicles.model';
+import { character } from '../../../../../models/characters.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
-import { CardContentComponent } from "../../../../layouts/card-content/card-content.component";
+import { CardContentComponent } from '../../../../layouts/card-content/card-content.component';
 
 @Component({
   selector: 'app-character-vehicles',
   standalone: true,
-  imports: [MatListModule, MatCardModule, SectionHeaderComponent, CardContentComponent],
+  imports: [
+    MatListModule,
+    MatCardModule,
+    SectionHeaderComponent,
+    CardContentComponent,
+  ],
   templateUrl: './character-vehicles.component.html',
   styleUrl: './character-vehicles.component.css',
 })
@@ -41,5 +46,9 @@ export class CharacterVehiclesComponent implements OnChanges {
       let res = await this.vehiclesService.obtener(id);
       this.vehiclesData.push(res);
     });
+  }
+
+  seeVehicle(url: string) {
+    this.toolsService.goLocation(url, 'vehicle');
   }
 }

@@ -6,10 +6,10 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FilmsService } from '../../../../../services/films.service';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { ToolsService } from '../../../../../services/tools.service';
 import { Router } from '@angular/router';

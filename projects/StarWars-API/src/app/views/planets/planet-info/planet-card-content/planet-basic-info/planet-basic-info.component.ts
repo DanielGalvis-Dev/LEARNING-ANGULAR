@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SectionHeaderComponent } from "../../../../layouts/section-header/section-header.component";

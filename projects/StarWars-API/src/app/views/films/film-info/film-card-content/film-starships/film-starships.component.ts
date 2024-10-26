@@ -5,12 +5,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { ToolsService } from '../../../../../services/tools.service';
 import { StarshipsService } from '../../../../../services/starships.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { starshipsResults } from '../../../../../models/starships.model';
 
 @Component({
   selector: 'app-film-starships',
@@ -23,7 +24,7 @@ export class FilmStarshipsComponent implements OnChanges {
   @Input() filmInfo!: filmsResults;
   toolService = inject(ToolsService);
   starshipService = inject(StarshipsService);
-  starshipNames: string[] = [];
+  starshipData: starshipsResults[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filmInfo'] && changes['filmInfo'].currentValue) {
@@ -35,9 +36,11 @@ export class FilmStarshipsComponent implements OnChanges {
     const data = this.filmInfo.starships;
     const service = this.starshipService.obtener.bind(this.starshipService);
     if (data) {
-      this.starshipNames = (await this.toolService.getData(data, service)).map(
-        (data) => data.name
-      );
+      this.starshipData = await this.toolService.getData(data, service);
     }
+  }
+
+  seeStarship(url: string) {
+    this.toolService.goLocation(url, 'starship');
   }
 }

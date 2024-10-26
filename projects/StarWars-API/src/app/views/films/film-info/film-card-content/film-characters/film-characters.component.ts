@@ -5,13 +5,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { CharactersService } from '../../../../../services/characters.service';
 import { ToolsService } from '../../../../../services/tools.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { Router } from '@angular/router';
 
 @Component({

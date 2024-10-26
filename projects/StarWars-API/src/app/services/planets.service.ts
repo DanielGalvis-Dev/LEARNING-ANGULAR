@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { apiUrl } from '../settings/appsettings';
 import { HttpClient } from '@angular/common/http';
-import { planets, planetsResults } from '../models/planets';
+import { planets, planetsResults } from '../models/planets.model';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({

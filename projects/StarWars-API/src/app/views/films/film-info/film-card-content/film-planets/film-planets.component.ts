@@ -5,13 +5,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filmsResults } from '../../../../../models/films';
+import { filmsResults } from '../../../../../models/films.model';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ToolsService } from '../../../../../services/tools.service';
 import { PlanetsService } from '../../../../../services/planets.service';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 
 @Component({
   selector: 'app-film-planets',

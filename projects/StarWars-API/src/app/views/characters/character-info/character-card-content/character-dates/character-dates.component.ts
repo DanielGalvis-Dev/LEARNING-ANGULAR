@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 

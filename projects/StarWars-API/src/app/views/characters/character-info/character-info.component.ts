@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
-import { character } from '../../../models/characters';
+import { character } from '../../../models/characters.model';
 import { firstValueFrom } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { CardHeaderComponent } from '../../layouts/card-header/card-header.component';

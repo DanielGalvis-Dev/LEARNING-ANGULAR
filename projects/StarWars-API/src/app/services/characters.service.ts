@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { APIRes, character } from '../models/characters';
+import { APIRes, character } from '../models/characters.model';
 import { apiUrl } from '../settings/appsettings';
 import { firstValueFrom } from 'rxjs';
 

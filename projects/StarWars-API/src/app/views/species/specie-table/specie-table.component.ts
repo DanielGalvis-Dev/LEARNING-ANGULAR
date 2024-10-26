@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ToolsService } from '../../../services/tools.service';
 import { SpeciesService } from '../../../services/species.service';
-import { species, speciesResults } from '../../../models/species';
+import { species, speciesResults } from '../../../models/species.model';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';

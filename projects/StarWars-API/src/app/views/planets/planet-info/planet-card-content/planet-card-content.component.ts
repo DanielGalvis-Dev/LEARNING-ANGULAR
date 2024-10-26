@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-import { planetsResults } from '../../../../models/planets';
+import { planetsResults } from '../../../../models/planets.model';
 import { PlanetBasicInfoComponent } from './planet-basic-info/planet-basic-info.component';
 import { PlanetResidentsComponent } from './planet-residents/planet-residents.component';
 import { PlanetFilmsComponent } from './planet-films/planet-films.component';

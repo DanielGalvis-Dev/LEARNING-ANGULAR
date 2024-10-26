@@ -3,8 +3,10 @@
   <mat-card-content class="starships-content">
     @if (characterInfo.starships.length > 0) {
     <!--  -->
-    @for (starship of starshipsData; track starship) {
-    <mat-list-item> {{ starship.name }} </mat-list-item>
+    @for (starship of starshipsData; track starship.name) {
+    <mat-list-item class="link-item">
+      <span (click)="seeStarship(starship.url)">{{ starship.name }} </span>
+    </mat-list-item>
     } } @else {
     <mat-list-item> unknown </mat-list-item>
     }

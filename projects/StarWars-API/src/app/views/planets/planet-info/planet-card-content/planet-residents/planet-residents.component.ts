@@ -5,11 +5,11 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { CharactersService } from '../../../../../services/characters.service';
 

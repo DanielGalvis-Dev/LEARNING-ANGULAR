@@ -8,7 +8,7 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
-import { speciesResults } from '../../../../../models/species';
+import { speciesResults } from '../../../../../models/species.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { PlanetsService } from '../../../../../services/planets.service';
 

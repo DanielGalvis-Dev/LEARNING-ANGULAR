@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { CharactersService } from '../../../services/characters.service';
 import { ToolsService } from '../../../services/tools.service';
-import { APIRes, character } from '../../../models/characters';
+import { APIRes, character } from '../../../models/characters.model';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';

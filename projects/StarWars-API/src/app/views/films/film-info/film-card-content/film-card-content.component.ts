@@ -8,7 +8,7 @@ import { FilmDatesComponent } from './film-dates/film-dates.component';
 import { MatListModule } from '@angular/material/list';
 import { CharacterBasicInfoComponent } from '../../../characters/character-info/character-card-content/character-basic-info/character-basic-info.component';
 import { FilmVehiclesComponent } from './film-vehicles/film-vehicles.component';
-import { filmsResults } from '../../../../models/films';
+import { filmsResults } from '../../../../models/films.model';
 
 @Component({
   selector: 'app-film-card-content',

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { films, filmsResults } from '../../../models/films';
+import { films, filmsResults } from '../../../models/films.model';
 import { FilmsService } from '../../../services/films.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';

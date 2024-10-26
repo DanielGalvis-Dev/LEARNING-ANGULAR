@@ -3,7 +3,7 @@
   <mat-card-content class="films-content">
     @if (characterInfo.films.length > 0) {
     <!--  -->
-    @for (film of filmsData; track film) {
+    @for (film of filmsData; track film.title) {
     <mat-list-item class="link-item">
       <span (click)="seeFilm(film.url)">{{ film.title }}</span>
     </mat-list-item>

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CardHeaderComponent } from '../../layouts/card-header/card-header.component';
 import { SpeciesService } from '../../../services/species.service';
-import { species, speciesResults } from '../../../models/species';
+import { species, speciesResults } from '../../../models/species.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { SpecieCardContentComponent } from "./specie-card-content/specie-card-content.component";

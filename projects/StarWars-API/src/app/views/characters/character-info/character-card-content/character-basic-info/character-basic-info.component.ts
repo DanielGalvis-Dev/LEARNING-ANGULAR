@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { character } from '../../../../../models/characters';
+import { character } from '../../../../../models/characters.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';

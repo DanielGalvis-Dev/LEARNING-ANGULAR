@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { PlanetsService } from '../../../services/planets.service';
-import { planets, planetsResults } from '../../../models/planets';
+import { planets, planetsResults } from '../../../models/planets.model';
 import { CardHeaderComponent } from '../../layouts/card-header/card-header.component';
 import { MatCardModule } from '@angular/material/card';
 import { PlanetCardContentComponent } from './planet-card-content/planet-card-content.component';

@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { MatListModule } from '@angular/material/list';

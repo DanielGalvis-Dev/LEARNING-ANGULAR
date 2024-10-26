@@ -6,12 +6,12 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { SpeciesService } from '../../../../../services/species.service';
-import { speciesResults } from '../../../../../models/species';
-import { character } from '../../../../../models/characters';
+import { speciesResults } from '../../../../../models/species.model';
+import { character } from '../../../../../models/characters.model';
 import { ToolsService } from '../../../../../services/tools.service';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { planetsResults } from '../../../../../models/planets';
+import { planetsResults } from '../../../../../models/planets.model';
 import { PlanetsService } from '../../../../../services/planets.service';
 import { SectionHeaderComponent } from '../../../../layouts/section-header/section-header.component';
 import { NgClass } from '@angular/common';

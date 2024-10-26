@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { ToolsService } from '../../../services/tools.service';
 import { Router } from '@angular/router';
-import { films, filmsResults } from '../../../models/films';
+import { films, filmsResults } from '../../../models/films.model';
 import { FilmsService } from '../../../services/films.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
