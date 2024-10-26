@@ -4,7 +4,8 @@ button {
 }
 
 button:hover {
-  background: #00000055;
+  background: linear-gradient(to right, #0000b7, #5e00b7 60%);
+  /* background: #ffffff55; */
 }
 
 button:disabled {
