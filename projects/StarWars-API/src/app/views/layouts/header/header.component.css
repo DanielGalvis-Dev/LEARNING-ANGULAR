@@ -6,6 +6,8 @@
   padding: 0 80px;
   background: linear-gradient(to right, #0000b7, #5e00b7 60%);
   color: #fff;
+  /* background: #000000; */
+  /* position: fixed; */
 }
 
 .header-mobile {
