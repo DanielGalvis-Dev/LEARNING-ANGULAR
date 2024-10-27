@@ -1,7 +1,5 @@
 <!-- @if (starshipInfo.pilots) { -->
-<mat-list
-  class="starship-card-content"
-  >
+<mat-list class="starship-card-content">
   <!-- ngClass="{{ starshipInfo.pilots.length < 5 ? 'isSmall' : '' }}" -->
   <app-starship-basic-info class="starship-basic-info" [starshipInfo]="starshipInfo" />
   <app-starship-pilots class="starship-residents" [starshipInfo]="starshipInfo" />

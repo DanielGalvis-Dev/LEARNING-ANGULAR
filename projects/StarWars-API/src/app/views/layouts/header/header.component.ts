@@ -66,7 +66,7 @@ export class HeaderComponent {
       name: 'vehicles',
       icon: 'directions_car',
       event: this.vehicles.bind(this),
-      disabled: true,
+      disabled: false,
       active: false,
     },
     {

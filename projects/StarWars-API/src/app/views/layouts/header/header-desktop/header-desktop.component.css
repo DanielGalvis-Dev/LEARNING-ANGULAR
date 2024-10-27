@@ -3,16 +3,20 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
-  /* background: linear-gradient(to right, #0000b7, #5e00b7 60%); */
-  background: #00000055;
-  /* background: #ffffff55; */
-}
-
 button:disabled {
   opacity: 0.6;
 }
 
+button:hover {
+  background: #00000090;
+}
+
 .active {
-  background: #00000055;
+  background: #00000090;
+}
+
+.link-item {
+  position: relative;
+  width: max-content;
+  cursor: pointer;
 }

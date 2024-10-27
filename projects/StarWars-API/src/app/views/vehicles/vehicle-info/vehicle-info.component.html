@@ -1,0 +1,11 @@
+<mat-card class="card-info" appearance="outlined">
+  <app-card-header
+    (fetchData)="obtener($event)"
+    [count]="count"
+    [idP]="id"
+    [name]="name"
+  />
+  <mat-card-content>
+    <app-vehicle-card-content [vehicleInfo]="vehicleInfo" />
+  </mat-card-content>
+</mat-card>

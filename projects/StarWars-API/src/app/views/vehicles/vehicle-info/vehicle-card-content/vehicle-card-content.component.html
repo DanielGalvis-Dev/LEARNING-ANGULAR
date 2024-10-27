@@ -1,0 +1,12 @@
+<!-- @if (vehicleInfo.pilots) { -->
+<mat-list class="vehicle-card-content">
+  <!-- ngClass="{{ vehicleInfo.pilots.length < 5 ? 'isSmall' : '' }}" -->
+  <app-vehicle-basic-info
+    class="vehicle-basic-info"
+    [vehicleInfo]="vehicleInfo"
+  />
+  <app-vehicle-pilots class="vehicle-residents" [vehicleInfo]="vehicleInfo" />
+  <app-vehicle-films class="vehicle-films" [vehicleInfo]="vehicleInfo" />
+  <app-vehicle-dates class="vehicle-dates" [vehicleInfo]="vehicleInfo" />
+</mat-list>
+<!-- } -->

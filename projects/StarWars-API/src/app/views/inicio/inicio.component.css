@@ -4,7 +4,9 @@
   background-image: url(../../assets/StarWars-API-background.PNG);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: auto;
+  background-size: cover;
+  position: absolute;
+  top: 0;
 }
 
 .items-counts {
@@ -13,11 +15,15 @@
   position: absolute;
   height: auto;
   width: 100%;
-  bottom: 0;
+  bottom: 80px;
+  background: #000000b7;
 
   .item {
     height: auto;
     width: max-content;
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
 
     p {
       color: #fff;
@@ -34,4 +40,8 @@
       color: #fff;
     }
   }
+}
+
+.item:hover {
+  transform: translateY(-7px);
 }

@@ -1,0 +1,14 @@
+<mat-card class="card-content" appearance="outlined">
+  <app-section-header [icon]="'movie'" [title]="'FILMS'" />
+  <mat-card-content class="films-content">
+    @if ( vehicleInfo.films && vehicleInfo.films.length > 0) {
+    <!--  -->
+    @for (film of filmsData; track film.title) {
+    <mat-list-item class="link-item">
+      <span (click)="seeFilm(film.url)">{{ film.title }}</span>
+    </mat-list-item>
+    } }@else {
+    <mat-list-item> unknown </mat-list-item>
+    }
+  </mat-card-content>
+</mat-card>
