@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './charater-table.component.html',
   styleUrl: './charater-table.component.css',
 })
-export class CharaterTableComponent implements AfterViewInit, OnInit {
+export class  CharaterTableComponent implements AfterViewInit, OnInit {
   // Services
   private toolsService = inject(ToolsService);
   private charactersService = inject(CharactersService);

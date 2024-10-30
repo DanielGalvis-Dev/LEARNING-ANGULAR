@@ -1,0 +1,21 @@
+@if (name) {
+<mat-card-header class="card-info-header">
+  <mat-card-title>
+    {{ name.toUpperCase() }}
+  </mat-card-title>
+  <mat-card-actions class="card-info-actions">
+    @for (button of actions; track button) {
+    <button
+      mat-icon-button
+      class="{{ button.class }}"
+      matTooltip="{{ button.action }}"
+      matTooltipPosition="above"
+      (click)="button.event()"
+      [disabled]="button.disabled"
+    >
+      <mat-icon>{{ button.icon }}</mat-icon>
+    </button>
+    }
+  </mat-card-actions>
+</mat-card-header>
+}

@@ -1,0 +1,32 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header {
+  position: relative;
+  height: 80px;
+  padding: 0 80px;
+  background: linear-gradient(to right, #0000b7, #5e00b7 60%);
+  color: #fff;
+  z-index: 1;
+
+  .inicio {
+    cursor: pointer;
+  }
+}
+
+.header-mobile {
+  display: none;
+}
+
+@media (max-width: 770px) {
+  .header {
+    padding: 0 40px;
+  }
+  .header-desktop {
+    display: none;
+  }
+  .header-mobile {
+    display: block;
+  }
+}

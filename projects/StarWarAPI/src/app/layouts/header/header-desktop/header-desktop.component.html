@@ -1,0 +1,9 @@
+@for (button of actions; track button.name) {
+<button
+  mat-button
+  (click)="button.page()"
+  disabled="{{ button.disabled }}"
+>
+  {{ button.name }}
+</button>
+}

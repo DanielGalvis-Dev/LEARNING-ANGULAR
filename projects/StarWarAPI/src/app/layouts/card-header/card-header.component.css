@@ -1,0 +1,36 @@
+.card-info-header {
+  background: linear-gradient(to bottom right, #0000b7, #5e00b7);
+  border-radius: 10px 10px 0 0;
+  align-items: center;
+  color: white;
+  height: 136px;
+}
+
+.card-info-actions {
+  button {
+    position: absolute;
+    top: 10px;
+    color: #fff;
+    transition: 0.25s;
+  }
+  button:disabled {
+    color: #fff;
+    opacity: 0.6;
+  }
+}
+
+.first-button {
+  right: 10rem;
+}
+
+.prev-button {
+  right: 7rem;
+}
+
+.next-button {
+  right: 4rem;
+}
+
+.last-button {
+  right: 1rem;
+}
