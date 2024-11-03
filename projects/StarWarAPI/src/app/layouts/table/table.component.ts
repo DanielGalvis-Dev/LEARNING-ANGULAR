@@ -28,13 +28,16 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnChanges {
+  // Variables de entrada
   @Input('data') data!: any[];
   @Input('location') location!: string;
   @Input('icon') icon!: string;
 
+  // Servicio de herramientas
   private toolService = inject(ToolsService);
 
-  displayedColumns: string[] = ['info', 'action'];
+  // Variables  de la tabla
+  displayedColumns: string[] = ['id', 'name', 'action'];
   pageSizeOptions: number[] = [5, 10, 20];
   hidePageSize: boolean = false;
 
@@ -43,10 +46,13 @@ export class TableComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && changes['data'].currentValue) {
-      // console.log(this.data);
-      this.dataSource.data = this.data; // Actualiza la fuente de datos
-      this.dataSource.paginator = this.paginator; // Reasigna el paginador
-      this.validation();
+      if (this.data.length > 0) {
+        console.log(this.data);
+        this.dataSource.data = this.data; // Actualiza la fuente de datos
+        this.dataSource.paginator = this.paginator; // Reasigna el paginador
+        this.validation();
+        this.getIds();
+      }
     }
   }
 
@@ -58,8 +64,19 @@ export class TableComponent implements OnChanges {
     }
   }
 
+  convertUrlToId(url: string) {
+    const id = parseInt(this.toolService.extractOfUrl(url));
+    return id;
+  }
+
+  getIds() {
+    const ids = this.toolService.convertAllUrlToId(this.data);
+    console.log(ids);
+  }
   // Ver informacion detallada del elemento (peoples, planets, films, species, vehicles, starships)
   seeElemet(url: string) {
-    this.toolService.goLocation(url, this.location);
+    if (url) {
+      this.toolService.goLocation(url, this.location); // Redirigimos a la ubicación del elemento
+    }
   }
 }

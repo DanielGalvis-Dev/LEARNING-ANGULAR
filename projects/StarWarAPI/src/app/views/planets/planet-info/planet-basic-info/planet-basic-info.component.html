@@ -1,0 +1,34 @@
+@if (planetInfo) {
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <p><strong>Periodo de rotación</strong> {{ planetInfo.rotation_period }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Periodo orbital</strong> {{ planetInfo.orbital_period }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Diámetro</strong> {{ planetInfo.diameter }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Clima</strong> {{ planetInfo.climate }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Graveda</strong> {{ planetInfo.gravity }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Terreno</strong> {{ planetInfo.terrain }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Agua superficial</strong> {{ planetInfo.surface_water }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Población</strong> {{ planetInfo.population }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+}

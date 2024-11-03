@@ -1,0 +1,22 @@
+<mat-card appearance="outlined" class="card-content">
+  <!-- Sección de encabezado con un ícono y un título -->
+  <app-section-header [icon]="icon" [title]="title" />
+
+  <mat-card-content>
+    <mat-list>
+      <!-- Verifica si hay datos de personas disponibles -->
+      @if (peoples && peoples.length > 0) {
+        <!-- Itera sobre cada persona en el arreglo peopleData -->
+        @for (people of peopleData; track people.name) {
+          <mat-list-item class="link-item">
+            <!-- Muestra el nombre de la persona y permite hacer clic para ver más detalles -->
+            <span (click)="seePeople(people.url)">{{ people.name }}</span>
+          </mat-list-item>
+        } 
+      } @else {
+        <!-- Si no hay datos de personas, muestra "Unknown" -->
+        <mat-list-item> Unknown </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

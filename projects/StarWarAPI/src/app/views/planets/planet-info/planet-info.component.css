@@ -1,0 +1,48 @@
+.planet-content {
+  display: grid;
+  grid-template-areas:
+    "basic-info peoples films"
+    "dates dates dates";
+}
+
+.planet-basic-info {
+  grid-area: basic-info;
+}
+
+.planet-peoples {
+  grid-area: peoples;
+}
+
+.planet-films {
+  grid-area: films;
+}
+
+.planet-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 820px) {
+  .planet-content {
+    grid-template-areas:
+      "basic-info peoples"
+      "films peoples"
+      "dates dates";
+  }
+}
+
+.isSmall {
+  grid-template-areas:
+    "basic-info peoples"
+    "basic-info films"
+    "dates dates";
+}
+
+@media (max-width: 670px) {
+  .planet-content {
+    grid-template-areas:
+      "basic-info"
+      "peoples"
+      "films"
+      "dates";
+  }
+}

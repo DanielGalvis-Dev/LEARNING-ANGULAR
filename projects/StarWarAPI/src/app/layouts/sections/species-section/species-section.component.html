@@ -1,0 +1,27 @@
+<!-- Tarjeta de Material Design con apariencia 'outlined' -->
+<mat-card appearance="outlined" class="card-content">
+  <!-- Encabezado de sección que muestra un ícono y un título -->
+  <app-section-header [icon]="icon" [title]="title" />
+  
+  <!-- Contenido de la tarjeta -->
+  <mat-card-content>
+    <!-- Lista de elementos -->
+    <mat-list>
+      <!-- Verifica si hay especies y si la longitud de la lista de especies es mayor a 0 -->
+      @if (species && species.length > 0) {
+        <!-- Itera sobre los datos de especies -->
+        @for (specie of speciesData; track specie.name) {
+          <!-- Elemento de lista que representa una especie -->
+          <mat-list-item class="link-item">
+            <!-- Span que muestra el nombre de la especie y permite hacer clic para ver más detalles -->
+            <span (click)="seeSpecie(specie.url)">{{ specie.name }}</span>
+          </mat-list-item>
+        } 
+      } 
+      <!-- Si no hay especies, muestra un elemento de lista con el texto 'Unknown' -->
+      @else {
+        <mat-list-item> Unknown </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

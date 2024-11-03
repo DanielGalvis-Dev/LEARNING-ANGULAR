@@ -1,37 +1,60 @@
 <mat-card>
+  <!-- Tabla que utiliza Angular Material para mostrar datos -->
   <table mat-table [dataSource]="dataSource">
-    <!-- Position Column -->
-    <ng-container matColumnDef="info">
+    <!-- Definición de la columna para mostrar información -->
+    <ng-container matColumnDef="id">
+      <!-- Encabezado de la columna -->
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <!-- Celdas de la columna que muestran los datos -->
+      <td mat-cell *matCellDef="let element">
+        {{ convertUrlToId(element.url) }}
+      </td>
+    </ng-container>
+    <!-- Definición de la columna para mostrar información -->
+    <ng-container matColumnDef="name">
+      <!-- Encabezado de la columna -->
       <th mat-header-cell *matHeaderCellDef>Name</th>
+      <!-- Celdas de la columna que muestran los datos -->
       <td mat-cell *matCellDef="let element">
         <mat-card-header style="padding: 10px 16px">
           <div mat-card-avatar>
+            <!-- Icono que representa el elemento -->
             <mat-icon class="icon-element">{{ icon }}</mat-icon>
           </div>
+          <!-- Título que muestra el nombre o título del elemento -->
           <mat-card-title>{{
             element.name ? element.name : element.title
           }}</mat-card-title>
+          <!-- Subtítulo que muestra la ubicación del elemento -->
           <mat-card-subtitle> {{ location }} </mat-card-subtitle>
         </mat-card-header>
       </td>
     </ng-container>
+
+    <!-- Definición de la columna para las acciones -->
     <ng-container matColumnDef="action">
+      <!-- Encabezado de la columna vacío -->
       <th mat-header-cell *matHeaderCellDef></th>
+      <!-- Celdas de la columna que contienen botones de acción -->
       <td mat-cell *matCellDef="let element">
         <button
           mat-button
           (click)="seeElemet(element.url)"
-          matTooltip="Ver mas información acerca de este planeta"
+          matTooltip="Ver más información acerca de este planeta"
           matTooltipPosition="right"
         >
-          Ver mas...
+          Ver más...
         </button>
       </td>
     </ng-container>
 
+    <!-- Fila de encabezado de la tabla que utiliza las columnas definidas -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Fila de datos que utiliza las columnas definidas -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+  <!-- Paginador para la tabla -->
   <mat-paginator
     [hidePageSize]="hidePageSize"
     [pageSizeOptions]="pageSizeOptions"

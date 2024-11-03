@@ -1,0 +1,17 @@
+<mat-card appearance="outlined" class="card-info">
+  <app-card-header
+    [count]="count"
+    [idP]="id"
+    [name]="name"
+    (fetchData)="obtener($event)"
+  />
+  <mat-card-content class="film-content">
+    <app-film-basic-info class="film-basic-info" [filmInfo]="filmInfo" />
+    <app-peoples-section class="film-peoples" [peoples]="peoples" [title]="'CHARACTERS'"/>
+    <app-planets-section class="film-planets" [planets]="planets" />
+    <app-starships-section class="film-species" [starships]="starships" />
+    <app-vehicles-section class="film-starships" [vehicles]="vehicles" />
+    <app-species-section class="film-vehicles" [species]="species" />
+    <app-dates-section class="film-dates" [created]="created" [edited]="edited" />
+  </mat-card-content>
+</mat-card>

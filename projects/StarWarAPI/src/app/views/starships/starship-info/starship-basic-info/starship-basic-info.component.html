@@ -1,0 +1,50 @@
+@if (starshipInfo) {
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <p><strong>Modelo</strong> {{ starshipInfo.model }}</p>
+      </mat-list-item>
+      <mat-list-item class="large">
+        <p><strong>Fabricante</strong> {{ starshipInfo.manufacturer }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Costo en créditos</strong> {{ starshipInfo.cost_in_credits }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Longitud</strong> {{ starshipInfo.length }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Velocidad atmosférica máxima</strong></p>
+        {{ starshipInfo.max_atmosphering_speed }}
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Tripulación</strong> {{ starshipInfo.crew }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Pasajeros</strong> {{ starshipInfo.passengers }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Capacidad de carga</strong> {{ starshipInfo.cargo_capacity }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Consumibles</strong> {{ starshipInfo.consumables }}</p>
+      </mat-list-item>
+      <mat-list-item class="large">
+        <strong>Clasificación de hipermotor</strong>
+        {{ starshipInfo.hyperdrive_rating }}
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>MGLT</strong> {{ starshipInfo.MGLT }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p>
+          <strong>Clase de nave espacial</strong>
+          {{ starshipInfo.starship_class }}
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+}

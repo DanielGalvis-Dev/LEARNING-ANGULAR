@@ -1,0 +1,22 @@
+<mat-card appearance="outlined" class="card-content">
+  <!-- Encabezado de la sección que incluye un ícono y un título -->
+  <app-section-header [icon]="icon" [title]="title" />
+  
+  <mat-card-content>
+    <mat-list>
+      <!-- Verifica si existe una lista de planetas y si tiene elementos -->
+      @if (planets && planets.length > 0) {
+        <!-- Itera sobre cada planeta en el conjunto de datos de planetas -->
+        @for (planet of planetData; track planet.name) {
+          <mat-list-item class="link-item">
+            <!-- Al hacer clic en el nombre del planeta, se llama a la función seePlanet con la URL del planeta -->
+            <span (click)="seePlanet(planet.url)">{{ planet.name }}</span>
+          </mat-list-item>
+        }
+      } @else {
+        <!-- Si no hay planetas, muestra un elemento de lista que indica que la información es desconocida -->
+        <mat-list-item> Unknown </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

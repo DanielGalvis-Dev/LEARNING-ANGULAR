@@ -1,0 +1,64 @@
+.film-content {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-areas:
+    "basic-info peoples species"
+    "planets peoples species"
+    "vehicles peoples starships"
+    "vehicles peoples starships"
+    "dates dates dates";
+}
+
+.film-basic-info {
+  grid-area: basic-info;
+}
+
+.film-peoples {
+  grid-area: peoples;
+}
+
+.film-planets {
+  grid-area: planets;
+}
+
+.film-species {
+  grid-area: species;
+}
+
+.film-starships {
+  grid-area: starships;
+}
+
+.film-vehicles {
+  grid-area: vehicles;
+}
+
+.film-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 900px) {
+  .film-content {
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas:
+      "basic-info peoples"
+      "planets peoples"
+      "species peoples"
+      "vehicles starships"
+      "dates dates";
+  }
+}
+
+@media (max-width: 700px) {
+  .film-content {
+    grid-template-columns: repeat(1, auto);
+    grid-template-areas:
+      "basic-info"
+      "planets"
+      "species"
+      "peoples"
+      "vehicles"
+      "starships"
+      "dates";
+  }
+}

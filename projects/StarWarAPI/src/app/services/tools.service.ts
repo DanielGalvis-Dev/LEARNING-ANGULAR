@@ -31,6 +31,7 @@ export class ToolsService {
       }
     }
     // Devuelve el resultado extraído
+    // console.log(res);
     return res;
   }
 
@@ -65,7 +66,6 @@ export class ToolsService {
     // Mapea los datos a promesas de solicitudes HTTP
     const newInfo = data.map(async (info) => {
       const id = parseInt(this.extractOfUrl(info)); // Extrae el ID de la URL
-      // console.log(id);
       const res = await service(id); // Llama al servicio para obtener los datos
       return res;
     });
@@ -76,26 +76,44 @@ export class ToolsService {
 
   // Navega a una ubicación específica usando el router
   goLocation(url: string, location: string) {
-    const id = parseInt(this.extractOfUrl(url)); // Extrae el ID de la URL
+    const id = parseInt(this.extractOfUrl(url.toString())); // Extrae el ID de la URL
     this.router.navigate([location, id]); // Navega a la nueva ubicación
   }
 
   async allData<T>(
+    // Función de servicio que toma un string (página) y devuelve una promesa de datos paginados
     service: (page: string) => Promise<PagedData<T>>,
-    count: number
+    count: number // Total de elementos que se espera obtener
   ) {
-    let nextPage: string = '';
-    let results: any[] = [];
-    const numberOfPages = this.roundPages(count);
-    // console.log(numberOfPages);
+    let nextPage: string = ''; // Inicializa la variable para la siguiente página como una cadena vacía
+    let results: any[] = []; // Inicializa un array vacío para almacenar los resultados
+    const numberOfPages = this.roundPages(count); // Calcula el número total de páginas a partir del conteo total
 
+    // Itera a través del número de páginas
     for (let i = 0; i < numberOfPages; i++) {
-      let data = await service(nextPage);
-      results = results.concat(data.results);
-      nextPage = this.extractOfUrl(data.next);
+      let data = await service(nextPage); // Llama al servicio para obtener los datos de la página actual
+      results = results.concat(data.results); // Agrega los resultados obtenidos a la lista de resultados
+      nextPage = this.extractOfUrl(data.next); // Extrae la URL de la siguiente página de los datos obtenidos
     }
 
-    // console.log(results);
-    return results;
+    return results; // Devuelve todos los resultados recopilados
+  }
+
+  convertAllUrlToId(obj: any[]) {
+    let ids!: number[];
+    if (obj.length > 0) {
+      const urls = obj.map((element) => {
+        return element.url;
+      });
+      // console.log(urls);
+
+      if (urls.length > 0) {
+        ids = urls.map((url) => {
+          return parseInt(this.extractOfUrl(url));
+        });
+      }
+    }
+    // console.log(ids);
+    return ids;
   }
 }

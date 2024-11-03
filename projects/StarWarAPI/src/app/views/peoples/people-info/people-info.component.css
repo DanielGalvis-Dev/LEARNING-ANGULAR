@@ -1,0 +1,35 @@
+.people-content {
+  display: grid;
+  grid-template-areas:
+    "basicInfo films"
+    "basicInfo vehicles"
+    "basicInfo starships"
+    "dates dates";
+}
+
+.people-basic-Info {
+  grid-area: basicInfo;
+}
+.people-films {
+  grid-area: films;
+}
+.people-vehicles {
+  grid-area: vehicles;
+}
+.people-starships {
+  grid-area: starships;
+}
+.people-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 680px) {
+  .people-content {
+    grid-template-areas:
+      "basicInfo"
+      "films"
+      "vehicles"
+      "starships"
+      "dates";
+  }
+}

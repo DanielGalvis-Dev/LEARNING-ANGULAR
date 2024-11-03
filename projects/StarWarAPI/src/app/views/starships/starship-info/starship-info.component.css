@@ -1,0 +1,33 @@
+.starship-content {
+  display: grid;
+  grid-template-areas:
+    "basic-info peoples"
+    "basic-info films"
+    "dates dates";
+}
+
+.starship-basic-info {
+  grid-area: basic-info;
+}
+
+.starship-peoples {
+  grid-area: peoples;
+}
+
+.starship-films {
+  grid-area: films;
+}
+
+.starship-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 725px) {
+  .starship-content {
+    grid-template-areas:
+      "basic-info"
+      "peoples"
+      "films"
+      "dates";
+  }
+}

@@ -1,0 +1,14 @@
+<mat-card appearance="outlined" class="card-info">
+  <app-card-header 
+    [count]="count" 
+    [idP]="id" 
+    [name]="name" 
+    (fetchData)="obtener($event)"
+  />
+  <mat-card-content class="planet-content" [ngClass]="{isSmall: isSmall}">
+    <app-planet-basic-info class="planet-basic-info" [planetInfo]="planetInfo" />
+    <app-peoples-section class="planet-peoples" [peoples]="peoples" />
+    <app-films-section class="planet-films" [films]="films" />
+    <app-dates-section class="planet-dates" [created]="created" [edited]="edited" />
+  </mat-card-content>
+</mat-card>

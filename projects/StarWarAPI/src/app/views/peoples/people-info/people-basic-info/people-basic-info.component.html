@@ -1,0 +1,42 @@
+@if (peopleInfo) {
+<mat-card class="card-content" appearance="outlined">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <p><strong>Height</strong> {{ peopleInfo.height }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Mass</strong> {{ peopleInfo.mass }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Hair color</strong> {{ peopleInfo.hair_color }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Skin color</strong> {{ peopleInfo.skin_color }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Eye color</strong> {{ peopleInfo.eye_color }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Birth year</strong> {{ peopleInfo.birth_year }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Gender</strong> {{ peopleInfo.gender }}</p>
+      </mat-list-item>
+      <mat-list-item
+        [ngClass]="{ 'link-item': homeworld !== 'Unknown' }"
+        (click)="seePlanet(peopleInfo.homeworld)"
+      >
+        <p><strong>Homeworld</strong> {{ homeworld }}</p>
+      </mat-list-item>
+      <mat-list-item
+        [ngClass]="{ 'link-item': specie !== 'Unknown' }"
+        (click)="seeSpecie(peopleInfo.species)"
+      >
+        <p><strong>Specie</strong> {{ specie }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+}

@@ -1,0 +1,33 @@
+.vehicle-content {
+  display: grid;
+  grid-template-areas:
+    "basic-info pilots"
+    "basic-info films"
+    "dates dates";
+}
+
+.vehicle-basic-info {
+  grid-area: basic-info;
+}
+
+.vehicle-pilots {
+  grid-area: pilots;
+}
+
+.vehicle-films {
+  grid-area: films;
+}
+
+.vehicle-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 725px) {
+  .vehicle-content {
+    grid-template-areas:
+      "basic-info"
+      "pilots"
+      "films"
+      "dates";
+  }
+}

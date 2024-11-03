@@ -1,0 +1,19 @@
+@if (filmInfo) {
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <p><strong>Director</strong> {{ filmInfo.director }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Productor</strong> {{ filmInfo.producer }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Fecha de lanzamiento</strong> {{ filmInfo.release_date }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+}

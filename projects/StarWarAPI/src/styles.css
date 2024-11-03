@@ -1,4 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.card-content {
+  border: none !important ;
+  background: none !important;
+  /* width: max-content !important; */
+
+  .link-item {
+    position: relative !important;
+    width: max-content !important;
+    cursor: pointer !important;
+  }
+
+  .link-item::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 0px !important;
+    height: 1.5px !important;
+    bottom: 12px !important;
+    background: #0000b7 !important;
+    transition: 0.3s !important;
+  }
+
+  .link-item:hover::after {
+    width: 100% !important;
+  }
+
+  p {
+    white-space: normal !important;
+  }
+}
+
+.card-info {
+  /* max-width: 40rem; */
+  margin: 1rem 150px !important;
+  border: none !important;
+  background: linear-gradient(to top left, #ebebeb, #f4f4f4) !important;
+  position: relative !important;
+}
+
+@media (max-width: 900px) {
+  .card-info {
+    margin: 1rem 50px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-info {
+    margin: 1rem auto !important;
+  }
+}

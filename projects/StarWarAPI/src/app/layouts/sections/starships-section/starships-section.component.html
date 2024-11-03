@@ -1,0 +1,28 @@
+<!-- Tarjeta de Material Design con apariencia 'outlined' -->
+<mat-card appearance="outlined" class="card-content">
+    <!-- Encabezado de sección que muestra un ícono y un título -->
+    <app-section-header [icon]="icon" [title]="title" />
+    
+    <!-- Contenido de la tarjeta -->
+    <mat-card-content>
+      <!-- Lista de elementos -->
+      <mat-list>
+        <!-- Verifica si hay naves espaciales y si la longitud de la lista de naves espaciales es mayor a 0 -->
+        @if (starships && starships.length > 0) {
+          <!-- Itera sobre los datos de naves espaciales -->
+          @for (starship of starshipsData; track starship.name) {
+            <!-- Elemento de lista que representa una estarship -->
+            <mat-list-item class="link-item">
+              <!-- Span que muestra el nombre de la estarship y permite hacer clic para ver más detalles -->
+              <span (click)="seeStarship(starship.url)">{{ starship.name }}</span>
+            </mat-list-item>
+          } 
+        } 
+        <!-- Si no hay naves espaciales, muestra un elemento de lista con el texto 'Unknown' -->
+        @else {
+          <mat-list-item> Unknown </mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,22 @@
+<mat-card appearance="outlined" class="card-content">
+    <!-- Encabezado de la sección que incluye un ícono y un título -->
+    <app-section-header [icon]="icon" [title]="title" />
+    
+    <mat-card-content>
+      <mat-list>
+        <!-- Verifica si hay vehículos disponibles -->
+        @if (vehicles && vehicles.length > 0) {
+          <!-- Itera sobre cada vehículo en vehicleData -->
+          @for (vehicle of vehicleData; track vehicle.name) {
+            <mat-list-item class="link-item">
+              <!-- Nombre del vehículo que se puede hacer clic para ver más detalles -->
+              <span (click)="seeVehicle(vehicle.url)">{{ vehicle.name }} </span>
+            </mat-list-item>
+          } 
+        } @else {
+          <!-- Si no hay vehículos, muestra "Unknown" -->
+          <mat-list-item> Unknown</mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+</mat-card>

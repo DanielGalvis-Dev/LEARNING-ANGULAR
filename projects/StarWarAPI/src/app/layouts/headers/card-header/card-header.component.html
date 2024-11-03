@@ -1,0 +1,27 @@
+@if (name) {  <!-- Verifica si la variable 'name' tiene un valor -->
+  <mat-card-header class="card-info-header">  <!-- Encabezado de la tarjeta con clase CSS 'card-info-header' -->
+    <mat-card-title>  <!-- Título de la tarjeta -->
+      {{ name.toUpperCase() }}  <!-- Muestra el nombre en mayúsculas -->
+    </mat-card-title>
+    <mat-card-actions class="card-info-actions">  <!-- Sección para las acciones de la tarjeta con clase 'card-info-actions' -->
+      @for (button of actions; track button) {  <!-- Itera sobre la lista de 'actions' -->
+      <!-- mat-icon-button => Define el botón como un botón de ícono de Angular Material -->  
+      <!-- class => Asigna la clase CSS del botón dinámicamente -->
+      <!-- matTooltip => Muestra un tooltip con la acción del botón -->
+      <!-- matTooltipPosition => Posiciona el tooltip encima del botón -->
+      <!-- (click) => Asocia un evento de clic que ejecuta la función definida en 'button.event()' -->
+      <!-- [disabled] => Desactiva el botón si 'button.disabled' es verdadero -->
+      <button
+          mat-icon-button  
+          class="{{ button.class }}"  
+          matTooltip="{{ button.action }}"  
+          matTooltipPosition="above"  
+          (click)="button.event()"  
+          [disabled]="button.disabled"  
+        >
+          <mat-icon>{{ button.icon }}</mat-icon>  <!-- Muestra el ícono del botón -->
+        </button>
+      }
+    </mat-card-actions>
+  </mat-card-header>
+}

@@ -1,0 +1,26 @@
+<!-- Tarjeta principal que contiene el contenido de la sección -->
+<mat-card class="card-content" appearance="outlined">
+  
+  <!-- Encabezado de la sección, con icono y título -->
+  <app-section-header [icon]="icon" [title]="title" />
+  
+  <!-- Contenido de la tarjeta -->
+  <mat-card-content>
+    <mat-list>
+      <!-- Verifica si hay películas disponibles -->
+      @if ( films && films.length > 0) {
+        <!-- Si hay películas, itera sobre el array filmsData -->
+        @for (film of filmsData; track film.title) {
+          <!-- Elemento de lista para cada película -->
+          <mat-list-item class="link-item">
+            <!-- Al hacer clic en el título de la película, se llama a la función seeFilm con la URL de la película -->
+            <span (click)="seeFilm(film.url)">{{ film.title }}</span>
+          </mat-list-item>
+        } 
+      } @else {
+        <!-- Si no hay películas, muestra "Unknown" -->
+        <mat-list-item> Unknown </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

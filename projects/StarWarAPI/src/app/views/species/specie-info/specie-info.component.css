@@ -1,0 +1,33 @@
+.specie-content {
+  display: grid;
+  grid-template-areas:
+    "basic-info peoples"
+    "basic-info films"
+    "dates dates";
+}
+
+.specie-basic-info {
+  grid-area: basic-info;
+}
+
+.specie-peoples {
+  grid-area: peoples;
+}
+
+.specie-films {
+  grid-area: films;
+}
+
+.specie-dates {
+  grid-area: dates;
+}
+
+@media (max-width: 700px) {
+  .specie-content {
+    grid-template-areas:
+      "basic-info"
+      "peoples"
+      "films"
+      "dates";
+  }
+}

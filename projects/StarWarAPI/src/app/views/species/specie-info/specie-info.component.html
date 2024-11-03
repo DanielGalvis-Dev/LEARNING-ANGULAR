@@ -1,0 +1,14 @@
+<mat-card appearance="outlined" class="card-info">
+  <app-card-header
+    [count]="count"
+    [idP]="id"
+    [name]="name"
+    (fetchData)="obtener($event)"
+  />
+  <mat-card-content class="specie-content">
+    <app-specie-basic-info class="specie-basic-info" [specieInfo]="specieInfo" />
+    <app-peoples-section class="specie-peoples" [peoples]="peoples" />
+    <app-films-section class="specie-films" [films]="films" />
+    <app-dates-section class="specie-dates" [created]="created" [edited]="edited" />
+  </mat-card-content>
+</mat-card>

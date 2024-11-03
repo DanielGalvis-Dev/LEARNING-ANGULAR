@@ -1,0 +1,14 @@
+<mat-card appearance="outlined" class="card-info">
+  <app-card-header
+    [count]="count"
+    [idP]="id"
+    [name]="name"
+    (fetchData)="obtener($event)"
+  />
+  <mat-card-content class="starship-content">
+    <app-starship-basic-info class="starship-basic-info" [starshipInfo]="starshipInfo" />
+    <app-peoples-section class="starship-peoples" [peoples]="peoples" [title]="'PILOTS'"/>
+    <app-films-section class="starship-films" [films]="films" />
+    <app-dates-section class="starship-dates" [created]="created" [edited]="edited" />
+  </mat-card-content>
+</mat-card>

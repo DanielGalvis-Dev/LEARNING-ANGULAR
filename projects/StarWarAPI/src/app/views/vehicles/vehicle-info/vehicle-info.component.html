@@ -1,0 +1,14 @@
+<mat-card appearance="outlined" class="card-info">
+  <app-card-header
+    [count]="count"
+    [idP]="id"
+    [name]="name"
+    (fetchData)="obtener($event)"
+  />
+  <mat-card-content class="vehicle-content">
+    <app-vehicle-basic-info class="vehicle-basic-info" [vehicleInfo]="vehicleInfo" />
+    <app-peoples-section class="vehicle-pilots" [peoples]="peoples" [title]="'PILOTS'"/>
+    <app-films-section class="vehicle-films" [films]="films" />
+    <app-dates-section class="vehicle-dates" [created]="created" [edited]="edited" />
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,42 @@
+@if (specieInfo) {
+<mat-card appearance="outlined" class="card-content">
+  <app-section-header [icon]="'info'" [title]="'BASIC INFO'" />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <p><strong>Clasificación</strong> {{ specieInfo.classification }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Designación</strong> {{ specieInfo.designation }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Altura promedio</strong> {{ specieInfo.average_height }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Colores de piel</strong> {{ specieInfo.skin_colors }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Colores de cabello</strong> {{ specieInfo.hair_colors }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>Color de ojos</strong> {{ specieInfo.eye_colors }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p>
+          <strong>Esperanza de vida media</strong>
+          {{ specieInfo.average_lifespan }}
+        </p>
+      </mat-list-item>
+      <mat-list-item
+        [ngClass]="{ 'link-item': homeworld !== 'Unknown' }"
+        (click)="seePlanet(specieInfo.homeworld)"
+      >
+        <p><strong>planeta natal</strong> {{ homeworld }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p><strong>lenguaje</strong> {{ specieInfo.language }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+}
