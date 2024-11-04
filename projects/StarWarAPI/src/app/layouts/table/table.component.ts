@@ -47,11 +47,11 @@ export class TableComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && changes['data'].currentValue) {
       if (this.data.length > 0) {
-        console.log(this.data);
+        // console.log(this.data);
         this.dataSource.data = this.data; // Actualiza la fuente de datos
         this.dataSource.paginator = this.paginator; // Reasigna el paginador
         this.validation();
-        this.getIds();
+        this.sendIds();
       }
     }
   }
@@ -69,14 +69,19 @@ export class TableComponent implements OnChanges {
     return id;
   }
 
-  getIds() {
-    const ids = this.toolService.convertAllUrlToId(this.data);
-    console.log(ids);
-  }
   // Ver informacion detallada del elemento (peoples, planets, films, species, vehicles, starships)
   seeElemet(url: string) {
     if (url) {
       this.toolService.goLocation(url, this.location); // Redirigimos a la ubicación del elemento
+    }
+  }
+
+  sendIds() {
+    this.toolService.convertAllUrlToId(this.data);
+    const ids = this.toolService.recoverId();
+    if (ids.length > 0) {
+      // Guarda los ids actuales en el localStorage
+      localStorage.setItem('ids', JSON.stringify(ids));
     }
   }
 }

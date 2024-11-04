@@ -1,8 +1,10 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
+  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -10,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ToolsService } from '../../../services/tools.service';
 
 interface buttons {
   action: string;
@@ -30,6 +33,10 @@ export class CardHeaderComponent implements OnChanges {
   @Input('count') count!: number; // Cantidad total de elementos
   @Input('idP') idP!: number; // Identificador del elemento actual
   @Input('name') name!: string; // Nombre del elemento actual
+  // @Input('section') section!: string; // Array de id de los elementos
+
+  // Servicio de herramientas
+  toolservice = inject(ToolsService);
 
   // Evento de salida
   @Output() fetchData = new EventEmitter<number>();
@@ -66,6 +73,9 @@ export class CardHeaderComponent implements OnChanges {
     },
   ];
 
+  // Array de id de los elementos
+  ids: number[] = [];
+
   // Maneja los cambios en los inputs
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -74,52 +84,95 @@ export class CardHeaderComponent implements OnChanges {
       changes['idP'] &&
       changes['idP'].currentValue !== 0
     ) {
+      // console.log(this.idP);
       this.validation(this.idP);
+      this.getIds();
     }
   }
 
+  //
+  // ngOnInit(): void {
+    // this.getIds();
+  // }
+
   // Navega al primer elemento
   first() {
-    this.fetchData.emit(1);
-    this.validation(1);
+    this.fetchData.emit(this.ids[0]);
+    this.validation(this.ids[0]);
   }
 
   // Navega al elemento anterior
   prev() {
     if (this.idP > 0) {
-      this.idP--;
-      console.log(this.idP);
-      this.fetchData.emit(this.idP);
-      this.validation(this.idP);
+      // console.log(`idP: ${this.idP}`);
+      for (let i = this.idP - 1; this.ids[0] < this.ids[i]; i--) {
+        if (this.ids.includes(i)) {
+          // console.log(`i: ${i}`);
+          this.fetchData.emit(i);
+          this.validation(i);
+          break;
+        }
+      }
     }
   }
 
   // Navega al siguiente elemento
   next() {
-    if (this.idP < this.count) {
-      this.idP++;
-      console.log(this.idP);
-      this.fetchData.emit(this.idP);
-      this.validation(this.idP);
+    const lastPosition = this.ids.length - 1;
+    if (this.ids[this.idP - 1] < this.ids[lastPosition]) {
+      // console.log(`idP: ${this.idP}`);
+      for (let i = this.idP + 1; i < this.ids.length + 1; i++) {
+        if (this.ids.includes(i)) {
+          // console.log(`i: ${i}`);
+          this.fetchData.emit(i);
+          this.validation(i);
+          break;
+        }
+      }
     }
   }
 
   // Navega al último elemento
   last() {
-    this.fetchData.emit(this.count);
-    this.validation(this.count);
+    const lastPosition = this.ids.length - 1;
+    this.fetchData.emit(this.ids[lastPosition]);
+    this.validation(this.ids[lastPosition]);
   }
 
   // Valida las acciones disponibles según el ID actual
   validation(id: number) {
-    const actionsToDisable =
-      id === 1
-        ? ['First', 'Previous']
-        : id === this.count
-        ? ['Last', 'Next']
-        : [];
-    this.actions.forEach((btnC) => {
-      btnC.disabled = actionsToDisable.includes(btnC.action);
-    });
+    // console.log(`Parametro id: ${id}`);
+    // console.log(`primer id de la lista: ${this.ids[0]}`);
+    const lastPosition = this.ids.length - 1;
+    if (id !== 0) {
+      const actionsToDisable =
+        id === this.ids[0]
+          ? ['First', 'Previous']
+          : id === this.ids[lastPosition]
+          ? ['Last', 'Next']
+          : [];
+      this.actions.forEach((btnC) => {
+        btnC.disabled = actionsToDisable.includes(btnC.action);
+      });
+    }
+  }
+
+  getIds() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedIds = localStorage.getItem('ids');
+      if (storedIds) {
+        try {
+          const newIds: number[] = JSON.parse(storedIds);
+          this.ids = newIds;
+          // console.log(this.ids);
+        } catch (error) {
+          console.error('Error parsing JSON from localStorage:', error);
+        }
+      } else {
+        console.log('No IDs found in localStorage');
+      }
+    } else {
+      console.error('localStorage is not available');
+    }
   }
 }

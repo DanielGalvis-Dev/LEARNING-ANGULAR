@@ -11,6 +11,7 @@
 
 .items-counts {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   position: absolute;
   height: auto;

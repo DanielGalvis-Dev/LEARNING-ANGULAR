@@ -68,6 +68,7 @@ export class VehicleInfoComponent implements OnInit {
     // Asigna los valores obtenidos a las variables correspondientes
     this.name = this.vehicleInfo.name; // Nombre del vehículo
     this.peoples = this.vehicleInfo.pilots; // Pilotos del vehículo
+    // console.log(this.peoples)
     this.films = this.vehicleInfo.films; // Películas en las que aparece el vehículo
     this.created = this.vehicleInfo.created; // Fecha de creación
     this.edited = this.vehicleInfo.edited; // Fecha de edición

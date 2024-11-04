@@ -99,6 +99,8 @@ export class ToolsService {
     return results; // Devuelve todos los resultados recopilados
   }
 
+  ids!: number[];
+
   convertAllUrlToId(obj: any[]) {
     let ids!: number[];
     if (obj.length > 0) {
@@ -113,7 +115,11 @@ export class ToolsService {
         });
       }
     }
-    // console.log(ids);
-    return ids;
+    this.ids = ids;
+    console.log(this.ids);
+  }
+
+  recoverId() {
+    return this.ids;
   }
 }
