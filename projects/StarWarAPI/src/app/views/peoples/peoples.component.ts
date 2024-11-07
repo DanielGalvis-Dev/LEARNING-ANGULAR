@@ -36,5 +36,7 @@ export class PeoplesComponent implements OnInit {
 
     // Se obtienen todos los datos utilizando el servicio de herramientas y se almacenan en 'data'
     this.data = await this.toolService.allData(service, count);
+    // console.log(this.data);
+    
   }
 }

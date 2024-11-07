@@ -14,7 +14,9 @@ export class FilmsService {
   async getAll() {
     const observable = this.http.get<films>(this.films);
     const res = await firstValueFrom(observable);
+    // console.log(res);
     return res;
+    
   }
 
   async getOne(id: number) {

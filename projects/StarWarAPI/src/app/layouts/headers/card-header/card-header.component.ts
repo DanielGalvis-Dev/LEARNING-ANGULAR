@@ -33,6 +33,7 @@ export class CardHeaderComponent implements OnChanges {
   @Input('count') count!: number; // Cantidad total de elementos
   @Input('idP') idP!: number; // Identificador del elemento actual
   @Input('name') name!: string; // Nombre del elemento actual
+  @Input('location') location!: string; // Nombre de la ubicacion actual
   // @Input('section') section!: string; // Array de id de los elementos
 
   // Servicio de herramientas
@@ -92,7 +93,7 @@ export class CardHeaderComponent implements OnChanges {
 
   //
   // ngOnInit(): void {
-    // this.getIds();
+  // this.getIds();
   // }
 
   // Navega al primer elemento
@@ -159,17 +160,44 @@ export class CardHeaderComponent implements OnChanges {
 
   getIds() {
     if (typeof window !== 'undefined' && window.localStorage) {
-      const storedIds = localStorage.getItem('ids');
-      if (storedIds) {
-        try {
-          const newIds: number[] = JSON.parse(storedIds);
-          this.ids = newIds;
-          // console.log(this.ids);
-        } catch (error) {
-          console.error('Error parsing JSON from localStorage:', error);
+      if (this.location.length > 0) {
+        let json;
+        switch (this.location) {
+          case 'people':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-people');
+            this.ids = JSON.parse(json!);
+            break;
+          case 'planet':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-planet');
+            this.ids = JSON.parse(json!);
+            break;
+          case 'film':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-film');
+            this.ids = JSON.parse(json!);
+            break;
+          case 'specie':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-specie');
+            this.ids = JSON.parse(json!);
+            break;
+          case 'starship':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-starship');
+            this.ids = JSON.parse(json!);
+            break;
+          case 'vehicle':
+            // Guarda los ids actuales en el localStorage
+            json = localStorage.getItem('ids-vehicle');
+            this.ids = JSON.parse(json!);
+            break;
+
+          default:
+            break;
         }
-      } else {
-        console.log('No IDs found in localStorage');
+        console.log(this.ids);
       }
     } else {
       console.error('localStorage is not available');

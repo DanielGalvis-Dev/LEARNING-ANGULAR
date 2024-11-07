@@ -95,6 +95,7 @@ export class ToolsService {
       results = results.concat(data.results); // Agrega los resultados obtenidos a la lista de resultados
       nextPage = this.extractOfUrl(data.next); // Extrae la URL de la siguiente página de los datos obtenidos
     }
+    // console.log(results);
 
     return results; // Devuelve todos los resultados recopilados
   }
@@ -116,7 +117,7 @@ export class ToolsService {
       }
     }
     this.ids = ids;
-    console.log(this.ids);
+    return ids;
   }
 
   recoverId() {

@@ -51,7 +51,6 @@ export class TableComponent implements OnChanges {
         this.dataSource.data = this.data; // Actualiza la fuente de datos
         this.dataSource.paginator = this.paginator; // Reasigna el paginador
         this.validation();
-        this.sendIds();
       }
     }
   }
@@ -73,15 +72,6 @@ export class TableComponent implements OnChanges {
   seeElemet(url: string) {
     if (url) {
       this.toolService.goLocation(url, this.location); // Redirigimos a la ubicación del elemento
-    }
-  }
-
-  sendIds() {
-    this.toolService.convertAllUrlToId(this.data);
-    const ids = this.toolService.recoverId();
-    if (ids.length > 0) {
-      // Guarda los ids actuales en el localStorage
-      localStorage.setItem('ids', JSON.stringify(ids));
     }
   }
 }
