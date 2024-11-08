@@ -9,12 +9,14 @@ import { SpeciesService } from '../../services/species.service';
 import { VehiclesService } from '../../services/vehicles.service';
 import { StarshipsService } from '../../services/starships.service';
 import { ToolsService } from '../../services/tools.service';
-export interface counts {
+
+export interface Count {
   name: string;
   count: number;
   class: string;
   page: () => void;
 }
+
 @Component({
   selector: 'app-inicio',
   standalone: true,
@@ -23,7 +25,6 @@ export interface counts {
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
-  // Inyección de dependencias para los servicios de la aplicación
   private router = inject(Router);
   private toolsService = inject(ToolsService);
 
@@ -34,7 +35,6 @@ export class InicioComponent implements OnInit {
   private vehiclesService = inject(VehiclesService);
   private starshipsService = inject(StarshipsService);
 
-  // Variables para almacenar el conteo de diferentes entidades
   peoplesCount!: number;
   planetsCount!: number;
   filmsCount!: number;
@@ -42,7 +42,6 @@ export class InicioComponent implements OnInit {
   vehiclesCount!: number;
   starshipsCount!: number;
 
-  // Métodos para navegar a diferentes rutas de la aplicación
   pages = {
     peoples: () => this.router.navigate(['peoples']),
     planets: () => this.router.navigate(['planets']),
@@ -52,52 +51,59 @@ export class InicioComponent implements OnInit {
     starships: () => this.router.navigate(['starships']),
   };
 
-  itemsCounts: counts[] = [];
+  itemsCounts: Count[] = [];
 
-  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
-    this.getCounts();
+    this.initializeCounts();
   }
 
-  // Función asíncrona para obtener los conteos de cada entidad
-  async getCounts() {
-    // Obtener conteos de cada servicio y asignarlos a las variables correspondientes
-    this.peoplesCount = (await this.peoplesService.getAll()).count;
-    this.planetsCount = (await this.planetsService.getAll()).count;
-    this.filmsCount = (await this.filmsService.getAll()).count;
-    this.speciesCount = (await this.speciesService.getAll()).count;
-    this.vehiclesCount = (await this.vehiclesService.getAll()).count;
-    this.starshipsCount = (await this.starshipsService.getAll()).count;
+  async initializeCounts() {
+    try {
+      await this.fetchCounts();
+      await this.getAllData();
+      this.setupItemCounts();
+    } catch (error) {
+      console.error('Error initializing counts', error);
+    }
+  }
 
-    this.setupItemCounts();
-    this.getAllData();
+  async fetchCounts() {
+    this.peoplesCount = await this.fetchCount(this.peoplesService);
+    this.planetsCount = await this.fetchCount(this.planetsService);
+    this.filmsCount = await this.fetchCount(this.filmsService);
+    this.speciesCount = await this.fetchCount(this.speciesService);
+    this.vehiclesCount = await this.fetchCount(this.vehiclesService);
+    this.starshipsCount = await this.fetchCount(this.starshipsService);
+  }
+
+  async fetchCount(service: any): Promise<number> {
+    const res = await service.getAll();
+    return res.count;
   }
 
   async getAllData() {
-    // Obtener datos de todas las entidades utilizando el servicio ToolsService
-    const peoplesData = await this.toolsService.allData(
-      this.peoplesService.getAll.bind(this.peoplesService),
+    const peoplesData = await this.fetchData(
+      this.peoplesService,
       this.peoplesCount
     );
-    const planetsData = await this.toolsService.allData(
-      this.planetsService.getAll.bind(this.planetsService),
+    const planetsData = await this.fetchData(
+      this.planetsService,
       this.planetsCount
     );
     const filmsData = (await this.filmsService.getAll()).results;
-    const speciesData = await this.toolsService.allData(
-      this.speciesService.getAll.bind(this.speciesService),
+    const speciesData = await this.fetchData(
+      this.speciesService,
       this.speciesCount
     );
-    const vehiclesData = await this.toolsService.allData(
-      this.vehiclesService.getAll.bind(this.vehiclesService),
+    const vehiclesData = await this.fetchData(
+      this.vehiclesService,
       this.vehiclesCount
     );
-    const starshipsData = await this.toolsService.allData(
-      this.starshipsService.getAll.bind(this.starshipsService),
+    const starshipsData = await this.fetchData(
+      this.starshipsService,
       this.starshipsCount
     );
 
-    // Convertir URLs a IDs utilizando el servicio ToolsService
     const idPeoples = this.toolsService.convertAllUrlToId(peoplesData);
     const idPlanets = this.toolsService.convertAllUrlToId(planetsData);
     const idFilms = this.toolsService.convertAllUrlToId(filmsData);
@@ -105,7 +111,15 @@ export class InicioComponent implements OnInit {
     const idVehicles = this.toolsService.convertAllUrlToId(vehiclesData);
     const idStarships = this.toolsService.convertAllUrlToId(starshipsData);
 
-    // Guardar los datos en el almacenamiento local
+    // console.log(
+    //   idPeoples,
+    //   idPlanets,
+    //   idFilms,
+    //   idSpecies,
+    //   idVehicles,
+    //   idStarships
+    // );
+    
     this.saveToLocalStorage(
       idPeoples,
       idPlanets,
@@ -114,6 +128,10 @@ export class InicioComponent implements OnInit {
       idVehicles,
       idStarships
     );
+  }
+
+  async fetchData(service: any, count: number): Promise<any> {
+    return await this.toolsService.allData(service.getAll.bind(service), count);
   }
 
   saveToLocalStorage(
@@ -125,14 +143,9 @@ export class InicioComponent implements OnInit {
     starships: number[]
   ) {
     if (
-      peoples.length &&
-      planets.length &&
-      films.length &&
-      species.length &&
-      vehicles.length &&
-      starships.length
+      this.isBrowser() &&
+      this.isValidData(peoples, planets, films, species, vehicles, starships)
     ) {
-      // Guarda los ids actuales en el localStorage
       localStorage.setItem('ids-people', JSON.stringify(peoples));
       localStorage.setItem('ids-planet', JSON.stringify(planets));
       localStorage.setItem('ids-film', JSON.stringify(films));
@@ -140,6 +153,17 @@ export class InicioComponent implements OnInit {
       localStorage.setItem('ids-vehicle', JSON.stringify(vehicles));
       localStorage.setItem('ids-starship', JSON.stringify(starships));
     }
+  }
+
+  isBrowser(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      typeof window.localStorage !== 'undefined'
+    );
+  }
+
+  isValidData(...dataArrays: number[][]): boolean {
+    return dataArrays.every((arr) => arr.length > 0);
   }
 
   setupItemCounts() {
