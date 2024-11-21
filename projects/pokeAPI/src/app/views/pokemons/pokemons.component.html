@@ -1,0 +1,38 @@
+<mat-form-field class="select-amount">
+  <mat-label>Amount</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option></mat-option>
+    @for (option of options; track option) {
+    <mat-option (click)="list(option)" [value]="option">{{ option }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+<div class="pokemons">
+  @for (pokemon of results; track pokemon.name) {
+  <mat-card class="pokemon-card" appearance="outlined">
+    <mat-card-header class="pokemon-header">
+      <img
+        class="pokemon-gif"
+        src="{{ gifImage(pokemon.url) }}"
+        alt="{{ pokemon.name }}"
+      />
+      <!-- <img mat-card-sm-image src="" alt="" /> -->
+      <mat-card-title class="pokemon-name">{{
+        pokemon.name.toUpperCase()
+      }}</mat-card-title>
+    </mat-card-header>
+    <img
+      class="pokemon-svg"
+      mat-card-image
+      src="{{ svgImage(pokemon.url) }}"
+      alt="{{ pokemon.name }}"
+    />
+    <mat-card-content>
+      <mat-chip-set>
+        <mat-chip>{{ toolService.extractIdOfTheUrl(pokemon.url) }}</mat-chip>
+        <!-- <mat-chip>{{ get(pokemon.url) }}</mat-chip> -->
+      </mat-chip-set>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
