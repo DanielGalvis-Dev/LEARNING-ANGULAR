@@ -16,15 +16,17 @@
     <!-- matTooltipPosition - Posición del tooltip por encima del asiento -->
     <!-- [ngClass] - Clase dinámica que aplica la clase 'ocupado' si el asiento está reservado (true) -->
     <!-- (click) - Evento que se dispara al hacer clic en el asiento, llamando a la función reservarAsiento con los índices de fila y columna -->
-    <p
+    <mat-icon
+      class="chair"
+      [ngClass]="asientos[row][col] === true ? 'ocupado' : ''"
       matTooltip="{{ row }},{{ col }}"
       matTooltipPosition="above"
-      [ngClass]="asientos[row][col] === true ? 'ocupado' : ''"
       (click)="reservarAsiento(row, col)"
     >
       <!-- Muestra 'X' si el asiento está ocupado, de lo contrario muestra 'L' para indicar que está libre -->
-      {{ asientos[row][col] ? "X" : "L" }}
-    </p>
+      <!-- {{ asientos[row][col] ? "X" : "L" }} -->
+      weekend
+    </mat-icon>
   </div>
 
   <!-- Fin del bucle de asientos en la fila actual -->

@@ -1,11 +1,12 @@
 import { NgClass } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-asientos',
   standalone: true,
-  imports: [NgClass, MatTooltipModule],
+  imports: [NgClass, MatTooltipModule, MatIconModule],
   templateUrl: './asientos.component.html',
   styleUrl: './asientos.component.css',
 })
