@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
-import { AppComponent } from '../app.component';
 import { NgClass } from '@angular/common';
 import { tablero } from '../model/tablero';
 
 @Component({
   selector: 'app-tablero',
   standalone: true,
-  imports: [MatCardModule, AppComponent, NgClass, MatButtonModule],
+  imports: [MatCardModule, NgClass, MatButtonModule],
   templateUrl: './tablero.component.html',
   styleUrl: './tablero.component.css',
 })
