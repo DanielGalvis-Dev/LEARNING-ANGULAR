@@ -1,7 +1,7 @@
 export interface species {
   count: number;
-  next: string;
-  previous: null | string;
+  next: string | null;
+  previous: string | null;
   results: speciesRes[];
 }
 

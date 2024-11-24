@@ -10,24 +10,26 @@ import { VehiclesService } from '../../services/vehicles.service';
 import { StarshipsService } from '../../services/starships.service';
 import { ToolsService } from '../../services/tools.service';
 
+// Interfaz que define la estructura de un objeto de conteo
 export interface Count {
-  name: string;
-  count: number;
-  class: string;
-  page: () => void;
+  name: string; // Nombre del elemento
+  count: number; // Cantidad de elementos
+  class: string; // Clase CSS para estilizar
+  page: () => void; // Función para navegar a la página correspondiente
 }
 
 @Component({
-  selector: 'app-inicio',
-  standalone: true,
-  imports: [MatCardModule, MatListModule],
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css'],
+  selector: 'app-inicio', // Selector del componente
+  standalone: true, // Indica que este componente es independiente
+  imports: [MatCardModule, MatListModule], // Importaciones de módulos de Angular Material
+  templateUrl: './inicio.component.html', // Ruta del archivo de plantilla
+  styleUrls: ['./inicio.component.css'], // Ruta del archivo de estilos
 })
 export class InicioComponent implements OnInit {
-  private router = inject(Router);
-  private toolsService = inject(ToolsService);
+  private router = inject(Router); // Inyección del servicio Router
+  private toolsService = inject(ToolsService); // Inyección del servicio ToolsService
 
+  // Inyección de servicios para obtener datos
   private peoplesService = inject(PeoplesService);
   private planetsService = inject(PlanetsService);
   private filmsService = inject(FilmsService);
@@ -35,6 +37,7 @@ export class InicioComponent implements OnInit {
   private vehiclesService = inject(VehiclesService);
   private starshipsService = inject(StarshipsService);
 
+  // Variables para almacenar los conteos de diferentes elementos
   peoplesCount!: number;
   planetsCount!: number;
   filmsCount!: number;
@@ -42,6 +45,7 @@ export class InicioComponent implements OnInit {
   vehiclesCount!: number;
   starshipsCount!: number;
 
+  // Mapeo de nombres de páginas a funciones de navegación
   pages = {
     peoples: () => this.router.navigate(['peoples']),
     planets: () => this.router.navigate(['planets']),
@@ -51,22 +55,26 @@ export class InicioComponent implements OnInit {
     starships: () => this.router.navigate(['starships']),
   };
 
+  // Arreglo para almacenar los conteos de elementos
   itemsCounts: Count[] = [];
 
+  // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
-    this.initializeCounts();
+    this.initializeCounts(); // Inicializa los conteos
   }
 
+  // Método para inicializar los conteos
   async initializeCounts() {
     try {
-      await this.fetchCounts();
-      await this.getAllData();
-      this.setupItemCounts();
+      await this.fetchCounts(); // Obtiene los conteos
+      await this.getAllData(); // Obtiene todos los datos
+      this.setupItemCounts(); // Configura los conteos de elementos
     } catch (error) {
-      console.error('Error initializing counts', error);
+      console.error('Error initializing counts', error); // Manejo de errores
     }
   }
 
+  // Método para obtener los conteos de cada servicio
   async fetchCounts() {
     this.peoplesCount = await this.fetchCount(this.peoplesService);
     this.planetsCount = await this.fetchCount(this.planetsService);
@@ -76,11 +84,13 @@ export class InicioComponent implements OnInit {
     this.starshipsCount = await this.fetchCount(this.starshipsService);
   }
 
+  // Método genérico para obtener el conteo de un servicio
   async fetchCount(service: any): Promise<number> {
-    const res = await service.getAll();
-    return res.count;
+    const res = await service.getAll(); // Llama al método getAll del servicio
+    return res.count; // Retorna el conteo
   }
 
+  // Método para obtener todos los datos de cada servicio
   async getAllData() {
     const peoplesData = await this.fetchData(
       this.peoplesService,
@@ -104,6 +114,7 @@ export class InicioComponent implements OnInit {
       this.starshipsCount
     );
 
+    // Convierte las URL a IDs utilizando el servicio de herramientas
     const idPeoples = this.toolsService.convertAllUrlToId(peoplesData);
     const idPlanets = this.toolsService.convertAllUrlToId(planetsData);
     const idFilms = this.toolsService.convertAllUrlToId(filmsData);
@@ -111,15 +122,7 @@ export class InicioComponent implements OnInit {
     const idVehicles = this.toolsService.convertAllUrlToId(vehiclesData);
     const idStarships = this.toolsService.convertAllUrlToId(starshipsData);
 
-    // console.log(
-    //   idPeoples,
-    //   idPlanets,
-    //   idFilms,
-    //   idSpecies,
-    //   idVehicles,
-    //   idStarships
-    // );
-    
+    // Guarda los IDs en el almacenamiento local
     this.saveToLocalStorage(
       idPeoples,
       idPlanets,
@@ -130,10 +133,12 @@ export class InicioComponent implements OnInit {
     );
   }
 
+  // Método para obtener datos de un servicio basado en el conteo
   async fetchData(service: any, count: number): Promise<any> {
     return await this.toolsService.allData(service.getAll.bind(service), count);
   }
 
+  // Método para guardar los IDs en el almacenamiento local
   saveToLocalStorage(
     peoples: number[],
     planets: number[],
@@ -143,9 +148,10 @@ export class InicioComponent implements OnInit {
     starships: number[]
   ) {
     if (
-      this.isBrowser() &&
-      this.isValidData(peoples, planets, films, species, vehicles, starships)
+      this.isBrowser() && // Verifica si está en un navegador
+      this.isValidData(peoples, planets, films, species, vehicles, starships) // Verifica la validez de los datos
     ) {
+      // Guarda los datos en el almacenamiento local
       localStorage.setItem('ids-people', JSON.stringify(peoples));
       localStorage.setItem('ids-planet', JSON.stringify(planets));
       localStorage.setItem('ids-film', JSON.stringify(films));
@@ -155,6 +161,7 @@ export class InicioComponent implements OnInit {
     }
   }
 
+  // Método para verificar si se está en un navegador
   isBrowser(): boolean {
     return (
       typeof window !== 'undefined' &&
@@ -162,10 +169,12 @@ export class InicioComponent implements OnInit {
     );
   }
 
+  // Método para validar que los datos no estén vacíos
   isValidData(...dataArrays: number[][]): boolean {
-    return dataArrays.every((arr) => arr.length > 0);
+    return dataArrays.every((arr) => arr.length > 0); // Verifica que cada arreglo tenga elementos
   }
 
+  // Método para configurar los conteos de elementos
   setupItemCounts() {
     this.itemsCounts = [
       {
@@ -204,6 +213,6 @@ export class InicioComponent implements OnInit {
         class: 'item starships-count',
         page: this.pages.starships,
       },
-    ];
+    ]; // Inicializa el arreglo de conteos de elementos
   }
 }

@@ -1,1 +1,9 @@
-<app-table [data]="data" [location]="location" [icon]="icon" />
+<app-table
+  [data]="data"
+  [location]="location"
+  [icon]="icon"
+  [prevPage]="prevPage"
+  [nextPage]="nextPage"
+  (fetchData)="list($event)"
+  (getByName)="getByname($event)"
+/>

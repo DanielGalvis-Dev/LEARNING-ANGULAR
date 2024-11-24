@@ -6,7 +6,6 @@ import { firstValueFrom } from 'rxjs';
 import { PeoplesService } from '../../../services/peoples.service';
 import { peoplesRes } from '../../../models/peoples.model';
 import { FilmsSectionComponent } from '../../../layouts/sections/films-section/films-section.component';
-import { VehiclesComponent } from '../../vehicles/vehicles.component';
 import { VehiclesSectionComponent } from '../../../layouts/sections/vehicles-section/vehicles-section.component';
 import { StarshipsSectionComponent } from '../../../layouts/sections/starships-section/starships-section.component';
 import { DatesSectionComponent } from '../../../layouts/sections/dates-section/dates-section.component';
@@ -20,7 +19,6 @@ import { PeopleBasicInfoComponent } from './people-basic-info/people-basic-info.
     CardHeaderComponent,
     PeopleBasicInfoComponent,
     FilmsSectionComponent,
-    VehiclesComponent,
     VehiclesSectionComponent,
     StarshipsSectionComponent,
     DatesSectionComponent,
@@ -68,7 +66,7 @@ export class PeopleInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP;
 
     // Llama al servicio para obtener la información del personaje por su ID
-    this.peopleInfo = await this.peopleService.getOne(this.id);
+    this.peopleInfo = await this.peopleService.getById(this.id);
 
     // Navega a la ruta del personaje usando su ID
     this.router.navigate(['people', this.id]);

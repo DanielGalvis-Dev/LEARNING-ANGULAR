@@ -43,8 +43,8 @@ export class VehiclesSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener los datos de los vehículos
   async obtener() {
-    // Se obtiene una referencia al método 'getOne' del servicio de vehículos
-    const service = this.vehicleService.getOne.bind(this.vehicleService);
+    // Se obtiene una referencia al método 'getById' del servicio de vehículos
+    const service = this.vehicleService.getById.bind(this.vehicleService);
 
     // Verifica si hay vehículos en el array 'vehicles'
     if (this.vehicles.length > 0) {

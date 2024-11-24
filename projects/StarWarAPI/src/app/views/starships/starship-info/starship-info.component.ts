@@ -63,7 +63,7 @@ export class StarshipInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP;
 
     // Obtenemos la información de la nave estelar utilizando el ID
-    this.starshipInfo = await this.starshipService.getOne(this.id);
+    this.starshipInfo = await this.starshipService.getById(this.id);
 
     // Navegamos a la ruta de la nave estelar
     this.router.navigate(['starship', this.id]);

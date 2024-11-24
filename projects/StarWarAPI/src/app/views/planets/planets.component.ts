@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ToolsService } from '../../services/tools.service';
 import { PlanetsService } from '../../services/planets.service';
 import { planetsRes } from '../../models/planets.model';
-import { TableComponent } from "../../layouts/table/table.component";
+import { TableComponent } from '../../layouts/table/table.component';
 
 @Component({
   selector: 'app-planets',
@@ -12,30 +11,37 @@ import { TableComponent } from "../../layouts/table/table.component";
   styleUrl: './planets.component.css',
 })
 export class PlanetsComponent implements OnInit {
-  // Inyecta los servicios necesarios para la gestión de herramientas y planetas
-private toolService = inject(ToolsService);
-private planetService = inject(PlanetsService);
+  private planetService = inject(PlanetsService); // Servicio para gestionar planetas
 
-// Parámetros de la clase
-data: planetsRes[] = []; // Almacena la lista de planetas
-icon = 'public'; // Icono que se utilizará en la interfaz
-location = 'planet'; // Ubicación o contexto de los datos, en este caso planetas
+  // Parámetros de la clase
+  data: planetsRes[] = []; // Almacena la lista de planetas
+  icon = 'public'; // Icono que se utilizará en la interfaz para representar planetas
+  location = 'planet'; // Ubicación o contexto de los datos, en este caso se refiere a planetas
+  prevPage: string | null = ''; // Almacena la URL de la página anterior de resultados
+  nextPage: string | null = ''; // Almacena la URL de la página siguiente de resultados
 
-// Método del ciclo de vida de Angular que se ejecuta al inicializar el componente
-ngOnInit(): void {
-  this.list(); // Llama al método 'list' para obtener la lista de planetas
-}
+  // Método del ciclo de vida de Angular que se ejecuta al inicializar el componente
+  ngOnInit(): void {
+    this.list(); // Llama al método 'list' para obtener la lista de planetas al inicializar
+  }
 
-// Método asíncrono para listar todos los planetas
-async list() {
-  // Obtiene el método 'getAll' del servicio de planetas y lo vincula al contexto correcto
-  const service = this.planetService.getAll.bind(this.planetService);
-  
-  // Llama al servicio para obtener la cantidad total de planetas
-  const count = (await this.planetService.getAll()).count;
-  
-  // Llama al servicio de herramientas para obtener todos los datos de planetas
-  // y los asigna a la propiedad 'data'
-  this.data = await this.toolService.allData(service, count);
-}
+  // Método asíncrono para listar todos los planetas
+  async list(page: string = '') {
+    // Llama al servicio para obtener los datos de los planetas, pasando la página como argumento
+    const res = await this.planetService.getAll(page);
+
+    // Almacena las URLs de la página anterior y la siguiente en las variables correspondientes
+    this.prevPage = res.previous; // URL de la página anterior
+    this.nextPage = res.next; // URL de la página siguiente
+
+    // Almacena los resultados obtenidos en el array 'data'
+    this.data = res.results; // Lista de planetas obtenidos
+  }
+
+  // Método asíncrono para obtener planetas por nombre
+  async getByname(name: string) {
+    // Llama al servicio para obtener los datos de un planeta por su nombre
+    // Almacena los resultados en el array 'data'
+    this.data = (await this.planetService.getByName(name)).results; // Lista de planetas filtrados por nombre
+  }
 }

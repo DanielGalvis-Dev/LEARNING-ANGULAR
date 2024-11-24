@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +7,7 @@ import { buttons } from '../header.component';
 @Component({
   selector: 'app-header-mobile',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatIconModule, NgClass],
+  imports: [MatButtonModule, MatMenuModule, MatIconModule],
   templateUrl: './header-mobile.component.html',
   styleUrl: './header-mobile.component.css',
 })

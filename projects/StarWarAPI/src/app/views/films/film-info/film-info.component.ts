@@ -65,7 +65,7 @@ export class FilmInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP; // Establece el ID de la película
 
     // Obtener información del personaje utilizando el ID
-    this.filmInfo = await this.filmService.getOne(this.id); // Llama al servicio para obtener la información de la película
+    this.filmInfo = await this.filmService.getById(this.id); // Llama al servicio para obtener la información de la película
     this.router.navigate(['film', this.id]); // Navega a la ruta de la película
 
     // Asigna la información obtenida a las variables correspondientes

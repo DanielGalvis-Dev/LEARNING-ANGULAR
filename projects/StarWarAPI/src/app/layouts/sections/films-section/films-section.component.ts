@@ -43,8 +43,8 @@ export class FilmsSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener los filmes
   async getFilms() {
-    // Se vincula el método 'getOne' del servicio de filmes al contexto actual
-    const service = this.filmsService.getOne.bind(this.filmsService);
+    // Se vincula el método 'getById' del servicio de filmes al contexto actual
+    const service = this.filmsService.getById.bind(this.filmsService);
 
     // Verifica si hay datos en la propiedad 'films'
     if (this.films) {

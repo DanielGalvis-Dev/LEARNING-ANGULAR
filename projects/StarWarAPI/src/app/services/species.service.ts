@@ -9,16 +9,22 @@ import { firstValueFrom } from 'rxjs';
 })
 export class SpeciesService {
   private http = inject(HttpClient);
-  private species: string = apiUrl.species;
+  private url: string = apiUrl.species;
 
   async getAll(page: string = '') {
-    const observable = this.http.get<species>(`${this.species}/?${page}`);
+    const observable = this.http.get<species>(`${this.url}/?${page}`);
     const res = await firstValueFrom(observable);
     return res;
   }
 
-  async getOne(id: number) {
-    const observable = this.http.get<speciesRes>(`${this.species}/${id}`);
+  async getById(id: number) {
+    const observable = this.http.get<speciesRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<species>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

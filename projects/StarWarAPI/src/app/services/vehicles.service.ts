@@ -9,16 +9,22 @@ import { firstValueFrom } from 'rxjs';
 })
 export class VehiclesService {
   private http = inject(HttpClient);
-  private vehicles: string = apiUrl.vehicles;
+  private url: string = apiUrl.vehicles;
 
   async getAll(page: string = '') {
-    const observable = this.http.get<vehicles>(`${this.vehicles}/?${page}`);
+    const observable = this.http.get<vehicles>(`${this.url}/?${page}`);
     const res = await firstValueFrom(observable);
     return res;
   }
 
-  async getOne(id: number) {
-    const observable = this.http.get<vehiclesRes>(`${this.vehicles}/${id}`);
+  async getById(id: number) {
+    const observable = this.http.get<vehiclesRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<vehicles>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

@@ -46,7 +46,7 @@ export class SpecieBasicInfoComponent implements OnChanges {
       if (planet.length > 0) {
         const id = parseInt(this.toolService.extractOfUrl(planet)); // Extraemos el ID del planeta de la URL
         // Llamamos al servicio de planetas para obtener el nombre del planeta usando el ID
-        this.homeworld = (await this.planetService.getOne(id)).name;
+        this.homeworld = (await this.planetService.getById(id)).name;
       } else {
         this.homeworld = 'Unknown'; // Si no hay URL, asignamos 'Desconocido'
       }

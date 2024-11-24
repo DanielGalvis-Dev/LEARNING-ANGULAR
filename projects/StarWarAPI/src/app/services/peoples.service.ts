@@ -17,8 +17,14 @@ export class PeoplesService {
     return res;
   }
 
-  async getOne(id: number) {
+  async getById(id: number) {
     const observable = this.http.get<peoplesRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<peoples>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

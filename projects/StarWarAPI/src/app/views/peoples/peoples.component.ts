@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TableComponent } from '../../layouts/table/table.component';
 import { PeoplesService } from '../../services/peoples.service';
-import { ToolsService } from '../../services/tools.service';
 import { peoplesRes } from '../../models/peoples.model';
 
 @Component({
@@ -12,31 +11,35 @@ import { peoplesRes } from '../../models/peoples.model';
   styleUrl: './peoples.component.css',
 })
 export class PeoplesComponent implements OnInit {
-  // Inyecta los servicios necesarios para la funcionalidad
-  private toolService = inject(ToolsService);
+  // Inyección del servicio PeoplesService para obtener datos de personas
   private peopleService = inject(PeoplesService);
 
-  // Parámetros
+  // Parámetros del componente
   data: peoplesRes[] = []; // Array para almacenar los datos de las personas
-  icon = 'person'; // Icono asociado a la entidad "persona"
-  location = 'people'; // Ubicación o contexto relacionado con las personas
+  icon: string = 'person'; // Icono asociado a la entidad "persona"
+  location: string = 'people'; // Ubicación o contexto relacionado con las personas
+  nextPage: string | null = ''; // URL para la siguiente página de resultados
+  prevPage: string | null = ''; // URL para la página anterior de resultados
 
   // Método que se ejecuta al inicializar el componente
   ngOnInit(): void {
-    this.list(); // Llama al método 'list' para obtener y cargar los datos
+    this.list(); // Llama al método 'list' para obtener y cargar los datos iniciales
   }
 
   // Método asíncrono para listar todas las personas
-  async list() {
-    // Se obtiene el método 'getAll' del servicio de personas y se vincula al contexto actual
-    const service = this.peopleService.getAll.bind(this.peopleService);
+  async list(page: string = '') {
+    // Llama al servicio para obtener los datos de las personas, pasando la página como argumento
+    const res = await this.peopleService.getAll(page);
+    // Almacena las URLs de la página anterior y la siguiente
+    this.prevPage = res.previous;
+    this.nextPage = res.next;
+    // Almacena los resultados en el array 'data'
+    this.data = res.results;
+  }
 
-    // Se llama al servicio para obtener el conteo total de personas
-    const count = (await this.peopleService.getAll()).count;
-
-    // Se obtienen todos los datos utilizando el servicio de herramientas y se almacenan en 'data'
-    this.data = await this.toolService.allData(service, count);
-    // console.log(this.data);
-    
+  // Método asíncrono para obtener personas por nombre
+  async getByname(name: string) {
+    // Llama al servicio para obtener los datos de la persona por nombre y almacena los resultados
+    this.data = (await this.peopleService.getByName(name)).results;
   }
 }

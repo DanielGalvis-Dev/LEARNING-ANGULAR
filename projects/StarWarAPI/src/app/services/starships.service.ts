@@ -9,18 +9,22 @@ import { firstValueFrom } from 'rxjs';
 })
 export class StarshipsService {
   private http = inject(HttpClient);
-  private starships: string = apiUrl.starships;
+  private url: string = apiUrl.starships;
 
   async getAll(page: string = '') {
-    const observable = this.http.get<starships>(`${this.starships}/?${page}`);
+    const observable = this.http.get<starships>(`${this.url}/?${page}`);
     const res = await firstValueFrom(observable);
     return res;
   }
 
-  async getOne(id: number) {
-    const observable = this.http.get<starshipsRes>(
-      `${this.starships}/${id}`
-    );
+  async getById(id: number) {
+    const observable = this.http.get<starshipsRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<starships>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

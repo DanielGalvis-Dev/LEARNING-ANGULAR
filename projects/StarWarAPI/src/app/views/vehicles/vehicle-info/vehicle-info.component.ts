@@ -61,7 +61,7 @@ export class VehicleInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP;
 
     // Obtiene la información del vehículo utilizando el servicio
-    this.vehicleInfo = await this.vehicleService.getOne(this.id);
+    this.vehicleInfo = await this.vehicleService.getById(this.id);
     // Navega a la ruta del vehículo específico
     this.router.navigate(['vehicle', this.id]);
 

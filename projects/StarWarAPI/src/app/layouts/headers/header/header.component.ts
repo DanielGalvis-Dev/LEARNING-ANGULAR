@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
@@ -19,7 +18,6 @@ export interface buttons {
     MatToolbarModule,
     HeaderDesktopComponent,
     HeaderMobileComponent,
-    NgClass,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

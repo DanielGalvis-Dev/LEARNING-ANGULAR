@@ -43,8 +43,8 @@ export class PeoplesSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener datos de las personas
   async obtener() {
-    // Se vincula el método 'getOne' del servicio de personas al contexto actual
-    const service = this.peopleService.getOne.bind(this.peopleService);
+    // Se vincula el método 'getById' del servicio de personas al contexto actual
+    const service = this.peopleService.getById.bind(this.peopleService);
 
     // Verifica si hay elementos en el array 'peoples'
     if (this.peoples.length > 0) {

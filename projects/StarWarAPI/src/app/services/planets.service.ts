@@ -9,16 +9,22 @@ import { firstValueFrom } from 'rxjs';
 })
 export class PlanetsService {
   private http = inject(HttpClient);
-  private planets: string = apiUrl.planets;
+  private url: string = apiUrl.planets;
 
   async getAll(page: string = '') {
-    const observable = this.http.get<planets>(`${this.planets}/?${page}`);
+    const observable = this.http.get<planets>(`${this.url}/?${page}`);
     const res = await firstValueFrom(observable);
     return res;
   }
 
-  async getOne(id: number) {
-    const observable = this.http.get<planetsRes>(`${this.planets}/${id}`);
+  async getById(id: number) {
+    const observable = this.http.get<planetsRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<planets>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

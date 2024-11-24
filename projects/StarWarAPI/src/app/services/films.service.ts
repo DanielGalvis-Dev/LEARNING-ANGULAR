@@ -9,18 +9,23 @@ import { firstValueFrom } from 'rxjs';
 })
 export class FilmsService {
   private http = inject(HttpClient);
-  private films: string = apiUrl.films;
+  private url: string = apiUrl.films;
 
   async getAll() {
-    const observable = this.http.get<films>(this.films);
+    const observable = this.http.get<films>(this.url);
     const res = await firstValueFrom(observable);
     // console.log(res);
     return res;
-    
   }
 
-  async getOne(id: number) {
-    const observable = this.http.get<filmsRes>(`${this.films}/${id}`);
+  async getById(id: number) {
+    const observable = this.http.get<filmsRes>(`${this.url}/${id}`);
+    const res = await firstValueFrom(observable);
+    return res;
+  }
+
+  async getByName(name: string) {
+    const observable = this.http.get<films>(`${this.url}/?search=${name}`);
     const res = await firstValueFrom(observable);
     return res;
   }

@@ -43,8 +43,8 @@ export class StarshipsSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener los datos de las naves estelares.
   async obtener() {
-    // Creamos una referencia al método 'getOne' del servicio de naves estelares.
-    const service = this.starshipService.getOne.bind(this.starshipService);
+    // Creamos una referencia al método 'getById' del servicio de naves estelares.
+    const service = this.starshipService.getById.bind(this.starshipService);
 
     // Verificamos si la propiedad 'starships' tiene datos.
     if (this.starships) {

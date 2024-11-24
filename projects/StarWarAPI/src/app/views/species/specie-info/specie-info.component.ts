@@ -61,7 +61,7 @@ export class SpecieInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP;
 
     // Llama al servicio para obtener la información de la especie por su ID
-    this.specieInfo = await this.specieService.getOne(this.id);
+    this.specieInfo = await this.specieService.getById(this.id);
     // Navega a la ruta de la especie utilizando su ID
     this.router.navigate(['specie', this.id]);
 

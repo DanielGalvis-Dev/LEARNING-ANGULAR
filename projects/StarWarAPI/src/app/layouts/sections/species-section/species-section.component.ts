@@ -43,8 +43,8 @@ export class SpeciesSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener los datos de las especies
   async obtener() {
-    // Se vincula el método 'getOne' del servicio de especies al contexto actual
-    const service = this.specieService.getOne.bind(this.specieService);
+    // Se vincula el método 'getById' del servicio de especies al contexto actual
+    const service = this.specieService.getById.bind(this.specieService);
 
     // Verifica si hay especies definidas
     if (this.species) {

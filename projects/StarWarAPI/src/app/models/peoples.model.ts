@@ -1,7 +1,7 @@
 export interface peoples {
   count: number; // Cantidad total de personajes disponibles en la base de datos
-  next: string; // URL de la siguiente página de resultados (si existe)
-  previous: string; // URL de la página anterior (o null si no hay una página anterior)
+  next: string | null; // URL de la siguiente página de resultados (si existe)
+  previous: string | null; // URL de la página anterior (o null si no hay una página anterior)
   results: peoplesRes[]; // Estructura de los objetos de cada personaje
 }
 

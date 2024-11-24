@@ -66,7 +66,7 @@ export class PlanetInfoComponent implements OnInit {
     this.id = idP === 0 ? parseInt(params['id']) : idP;
 
     // Obtiene la información del planeta a través del servicio utilizando el ID
-    this.planetInfo = await this.planetService.getOne(this.id);
+    this.planetInfo = await this.planetService.getById(this.id);
     // Navega a la ruta del planeta usando el ID
     this.router.navigate(['planet', this.id]);
 

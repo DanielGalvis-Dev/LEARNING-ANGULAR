@@ -48,7 +48,7 @@ export class PeopleBasicInfoComponent implements OnChanges {
       if (planet.length > 0) {
         // Si el mundo natal tiene longitud
         const id = parseInt(this.toolService.extractOfUrl(planet)); // Extrae el ID del URL del mundo natal
-        this.homeworld = (await this.planetService.getOne(id)).name; // Obtiene el nombre del planeta usando el servicio
+        this.homeworld = (await this.planetService.getById(id)).name; // Obtiene el nombre del planeta usando el servicio
       } else {
         this.homeworld = 'Unknown'; // Si no hay mundo natal, establece el valor como 'Desconocido'
       }
@@ -58,7 +58,7 @@ export class PeopleBasicInfoComponent implements OnChanges {
       if (specie.length > 0) {
         // Si la especie tiene longitud
         const id = parseInt(this.toolService.extractOfUrl(specie)); // Extrae el ID del URL de la especie
-        this.specie = (await this.specieService.getOne(id)).name; // Obtiene el nombre de la especie usando el servicio
+        this.specie = (await this.specieService.getById(id)).name; // Obtiene el nombre de la especie usando el servicio
       } else {
         this.specie = 'Unknown'; // Si no hay especie, establece el valor como 'Desconocido'
       }

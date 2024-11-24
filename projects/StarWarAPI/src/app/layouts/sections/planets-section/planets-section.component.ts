@@ -42,8 +42,8 @@ export class PlanetsSectionComponent implements OnChanges {
 
   // Método asíncrono para obtener los datos de los planetas
   async obtener() {
-    // Se vincula el método 'getOne' del servicio de planetas
-    const service = this.planetService.getOne.bind(this.planetService);
+    // Se vincula el método 'getById' del servicio de planetas
+    const service = this.planetService.getById.bind(this.planetService);
 
     // Verifica si hay planetas disponibles
     if (this.planets) {
