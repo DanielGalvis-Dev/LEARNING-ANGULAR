@@ -17,17 +17,32 @@ export interface pokemon {
   species: {};
   sprites: {};
   stats: [];
-  types: [];
+  types: types[];
   weight: number;
 }
 
 export interface abilities {
-  ability: ability;
+  ability: info;
   is_hidden: boolean;
   slot: number;
 }
 
-export interface ability {
+export interface types {
+  slot: number;
+  type: info;
+}
+
+export interface info {
   name: string;
   url: string;
+}
+
+export interface details {
+  id: number;
+  types: string[];
+  abilities: string[];
+  weight: number;
+  locations: string;
+  height: number;
+  state: boolean;
 }

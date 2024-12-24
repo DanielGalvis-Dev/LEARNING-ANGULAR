@@ -12,9 +12,13 @@ export class PokemonService {
   private http = inject(HttpClient);
   private url = apiUrl.url;
 
-  async getAll(section: string, limit: number) {
+  async getAll(
+    section: string = 'pokemon',
+    offset: number = 0,
+    limit: number = 100
+  ) {
     const observable = this.http.get<response>(
-      `${this.url}${section}?limit=${limit}`
+      `${this.url}${section}?offset=${offset}&limit=${limit}`
     );
     const res = await firstValueFrom(observable);
     // console.log(res);

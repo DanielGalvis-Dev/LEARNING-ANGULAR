@@ -3,7 +3,9 @@
   <mat-select [(value)]="selected">
     <mat-option></mat-option>
     @for (option of options; track option) {
-    <mat-option (click)="list(option)" [value]="option">{{ option }}</mat-option>
+    <mat-option (click)="list(option)" [value]="option">
+      {{ option }}
+    </mat-option>
     }
   </mat-select>
 </mat-form-field>
@@ -13,26 +15,46 @@
     <mat-card-header class="pokemon-header">
       <img
         class="pokemon-gif"
-        src="{{ gifImage(pokemon.url) }}"
-        alt="{{ pokemon.name }}"
+        [src]="gifImage(pokemon.url)"
+        [alt]="pokemon.name"
       />
       <!-- <img mat-card-sm-image src="" alt="" /> -->
-      <mat-card-title class="pokemon-name">{{
-        pokemon.name.toUpperCase()
-      }}</mat-card-title>
+      <mat-card-title class="pokemon-name">
+        {{ pokemon.name.toUpperCase() }}
+      </mat-card-title>
     </mat-card-header>
     <img
       class="pokemon-svg"
       mat-card-image
-      src="{{ svgImage(pokemon.url) }}"
-      alt="{{ pokemon.name }}"
+      [src]="svgImage(pokemon.url)"
+      [alt]="pokemon.name"
     />
-    <mat-card-content>
-      <mat-chip-set>
-        <mat-chip>{{ toolService.extractIdOfTheUrl(pokemon.url) }}</mat-chip>
-        <!-- <mat-chip>{{ get(pokemon.url) }}</mat-chip> -->
+
+    @for (detail of details; track detail.id) {
+    <!--  -->
+    @if (toolService.extractIdOfTheUrl(pokemon.url) === detail.id) {
+    <mat-card-content class="pokemon-content">
+      <button mat-icon-button (click)="seeDetails(detail.id)">
+        <mat-icon class="expand-icon">
+          {{ detail.state === false ? "expand_less" : "expand_more" }}
+        </mat-icon>
+      </button>
+      <mat-chip-set
+        class="pokemon-details"
+        [ngClass]="detail.state === true ? 'active' : ''"
+      >
+        <mat-chip class="item"> id: {{ detail.id }} </mat-chip>
+        @for (type of detail.types; track type) {
+        <mat-chip class="item"> type: {{ type }} </mat-chip>
+        } @for (ability of detail.abilities; track ability) {
+        <mat-chip class="item"> ability: {{ ability }} </mat-chip>
+        }
+        <mat-chip class="item"> height: {{ detail.height }} </mat-chip>
+        <mat-chip class="item"> weight: {{ detail.weight }} </mat-chip>
+        <!-- <mat-chip> {{ detail.locations }} </mat-chip> -->
       </mat-chip-set>
     </mat-card-content>
+    }}
   </mat-card>
   }
 </div>

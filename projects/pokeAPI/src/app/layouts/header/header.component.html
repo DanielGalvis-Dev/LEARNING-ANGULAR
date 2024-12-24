@@ -1,0 +1,16 @@
+<div class="nav-content">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row class="toolbar-row">
+      <span> POKE<strong>API</strong> </span>
+      <span class="spacer"></span>
+      <button mat-fab extended class="filter">
+        Type
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <div class="search-content">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input class="search-input" (keyup)="('#')" placeholder="Name" />
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

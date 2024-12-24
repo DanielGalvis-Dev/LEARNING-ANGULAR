@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "./layouts/header/header.component";
+import { PokemonTypesComponent } from "./layouts/header/pokemon-types/pokemon-types.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, PokemonTypesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

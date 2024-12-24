@@ -1,0 +1,24 @@
+.filter-types {
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  gap: 10px;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #000000;
+  width: max-content;
+
+  button {
+    border-radius: 5px;
+    background-color: #212121;
+    color: #fff;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background-color: #484848;
+  }
+
+  span {
+    opacity: 0.5;
+  }
+}

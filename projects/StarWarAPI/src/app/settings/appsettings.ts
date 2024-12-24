@@ -1,9 +1,9 @@
 // appSetting.ts
 export let apiUrl = {
-  peoples: 'https://swapi.dev/api/people',
-  planets: 'https://swapi.dev/api/planets',
-  films: 'https://swapi.dev/api/films',
-  species: 'https://swapi.dev/api/species',
-  vehicles: 'https://swapi.dev/api/vehicles',
-  starships: 'https://swapi.dev/api/starships',
+  peoples: 'https://swapi.py4e.com/api/people',
+  planets: 'https://swapi.py4e.com/api/planets',
+  films: 'https://swapi.py4e.com/api/films',
+  species: 'https://swapi.py4e.com/api/species',
+  vehicles: 'https://swapi.py4e.com/api/vehicles',
+  starships: 'https://swapi.py4e.com/api/starships',
 };
