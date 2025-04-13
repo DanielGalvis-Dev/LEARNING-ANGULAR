@@ -1,0 +1,29 @@
+<article class="experience-card">
+  <div class="experience-header">
+    <h3 class="company">{{ position }}</h3>
+
+    <span class="dates-content">
+      <a
+        class="company-link"
+        href="{{link}}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ company }}
+      </a>
+      ({{ date }})
+    </span>
+  </div>
+  <ul class="experience-body">
+    @for (content of description; track $index) {
+    <h4 class="achievement-header">{{ content.title }}</h4>
+    @for ( achievement of content.achievements; track $index) {
+    <li class="achievement">{{ achievement }}</li>
+    }}
+  </ul>
+  <mat-chip-set class="experience-footer">
+    @for (tool of tools; track $index) {
+    <mat-chip class="tool">{{ tool }}</mat-chip>
+    }
+  </mat-chip-set>
+</article>

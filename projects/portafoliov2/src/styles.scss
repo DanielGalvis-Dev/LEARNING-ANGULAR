@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@use "variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-text !important;
+}
+
+body {
+  background-color: $background-primary;
+}
+
+.project-name,
+h1,
+h2,
+h3 {
+  font-family: $font-title !important;
+  color: $title-color;
+}
+
+p {
+  color: $text-color;
+}
+
+label {
+  font-family: $font-text;
+  font-weight: bold;
+  font-size: 1rem;
+}

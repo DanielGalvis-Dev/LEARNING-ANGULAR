@@ -1,0 +1,39 @@
+@use "../../../variables" as *;
+.tool {
+  padding: 5px 0;
+}
+
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .dates-content {
+      color: $text-color;
+
+      .company-link {
+        text-decoration: none;
+        color: $text-color;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .experience-body {
+    color: $text-color;
+
+    .achievement-header {
+      margin: 0.75rem 0 0.5rem 0;
+    }
+    .achievement {
+      margin: 0 0 0.25rem 1rem;
+    }
+  }
+}

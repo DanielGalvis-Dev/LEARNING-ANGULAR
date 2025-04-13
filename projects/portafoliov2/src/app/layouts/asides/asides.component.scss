@@ -1,0 +1,25 @@
+@use "../../../variables" as *;
+
+.content-box-sm {
+  border-radius: $radius;
+  background-color: $background-secundary;
+  max-width: 350px;
+  padding: 30px;
+  height: fit-content;
+  margin-bottom: 30px;
+
+  .list-box {
+    color: $text-color;
+    list-style: none;
+
+    .list-item {
+      margin: 5px 0 0 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content-box-sm {
+    max-width: 100%;
+  }
+}

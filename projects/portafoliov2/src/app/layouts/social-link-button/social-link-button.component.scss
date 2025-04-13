@@ -1,0 +1,21 @@
+@use "../../../variables"  as *;
+
+.social-item {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-decoration: none;
+  color: $text-color;
+  background-color: $background-link;
+  border-radius: 50%;
+  transition: all 0.5s;
+  border: 1.5px solid transparent;
+}
+
+.social-item:hover {
+  color: $button-color;
+  border-color: $button-color;
+  background-color: $background-secundary;
+}

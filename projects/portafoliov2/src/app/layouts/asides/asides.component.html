@@ -1,0 +1,13 @@
+<aside class="content-box-sm">
+  <h2 class="title-box">{{ title }}</h2>
+  <p class="text-box">
+    {{ body }}
+  </p>
+  <ul class="list-box">
+    @for (item of items; track $index) {
+    <li class="list-item">
+      {{ item.name }} <span>{{ item.level ? "⇨" : "" }} {{ item.level }}</span>
+    </li>
+    }
+  </ul>
+</aside>

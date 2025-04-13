@@ -1,0 +1,69 @@
+<!-- Header Section: Contains the app-header component -->
+<header class="header">
+  <app-header />
+</header>
+
+<!-- Main Content Section: Contains all the main content of the page -->
+<main class="container">
+  <section class="principal-content">
+    <!-- Projects Section: Displays the latest projects -->
+    <article class="projects-content content-box">
+      <h2 class="title-box">Latest Projects</h2>
+      @for (project of proyectos; track $index) {
+      <!-- Project Component: Displays a single project -->
+      <app-project
+        [isFirst]="$index === 0 ? true : false"
+        [name]="project.nombre"
+        [description]="project.descripcion"
+        [link]="project.link"
+        [tools]="project.herramientas"
+      />
+      @if ($index === 0) {
+      <hr />
+      }}
+    </article>
+
+    <!-- Work Experience Section: Displays the work experience -->
+    <article class="work-experience content-box">
+      <h2 class="title-box">Work Experience</h2>
+      @for (experience of experiences; track $index) {
+      <!-- Work Experience Component: Displays a single work experience -->
+      <app-work-experience
+        [position]="experience.position"
+        [company]="experience.company"
+        [date]="experience.date"
+        [description]="experience.description"
+        [tools]="experience.tools"
+        [link]="experience.link"
+      />
+      }
+    </article>
+  </section>
+
+  <aside class="aside">
+    <app-asides
+      title="About Me"
+      body="Software Developer with 6 months of experience. 
+      I helped lead the front-end and back-end development 
+      of an electric motor management and maintenance project, 
+      achieving a 10% improvement in project delivery time, 
+      a 15% improvement in web performance, and a unified platform. 
+      I also improved database query speed by 30%."
+    />
+
+    <!-- Skills Section: Displays the skills of the author -->
+    <app-asides title="Technical Skills" [items]="technicalSkills" />
+
+    <!-- Skills Section: Displays the skills of the author -->
+    <app-asides title="Soft Skills" [items]="softSkills" />
+
+    <!-- Education Section: Displays the education of the author -->
+    <app-asides title="Education" />
+
+    <!-- Languages Section: Displays the languages spoken by the author -->
+    <app-asides title="Languages" [items]="languages" />
+  </aside>
+</main>
+
+<!-- Footer Section: Contains the copyright information -->
+<footer class="footer">&copy; Daniel Galvis Software Developer 2025</footer>
